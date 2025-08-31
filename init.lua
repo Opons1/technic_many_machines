@@ -1,6 +1,6 @@
 technic.register_recipe_type("stone_fabricator", {description = "Stone Fabricating"})
 
-core.register_node("technic_many_machines:stone_fabricator", {
+minetest.register_node("technic_many_machines:stone_fabricator", {
     description = "MV Stone Fabricator",
     tiles = {"default_steel_block.png"},
     groups = {cracky = 1, technic_machine = 1, technic_mv = 1},

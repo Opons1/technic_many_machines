@@ -7,10 +7,8 @@ function technic_many_machines.register_mass_compressor(data)
 
 	technic.register_base_machine(data)
 end
---we be mass compressing now
 technic.register_recipe_type("mass_compressing", {description = "Mass Compressing", input_size = 2})
 technic_many_machines.register_mass_compressor({tier = "HV", demand = {6000, 4500, 3000}, speed = 1, upgrade = 1, tube = 1})
---shoving an animation down your throat
 core.override_item("technic_many_machines:hv_masscompressor_active", {
     tiles = {
         "technic_many_machines_hv_masscompressor_top.png^pipeworks_tube_connection_metallic.png",

@@ -13,11 +13,11 @@ technic_many_machines.register_mass_compressor({tier = "HV", demand = {6000, 450
 --shoving an animation down your throat
 core.override_item("technic_many_machines:hv_masscompressor_active", {
     tiles = {
-        "technic_many_machines_hv_masscompressor_top.png",
-        "technic_many_machines_hv_masscompressor_bottom.png",
-        "technic_many_machines_hv_masscompressor_side.png",
-        "technic_many_machines_hv_masscompressor_side.png",
-        "technic_many_machines_hv_masscompressor_side.png",
+        "technic_many_machines_hv_masscompressor_top.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_masscompressor_bottom.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_masscompressor_side.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_masscompressor_side.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_masscompressor_side.png^pipeworks_tube_connection_metallic.png",
          {name = "technic_many_machines_hv_masscompressor_front_active.png",
         animation = {
             type = "vertical_frames",
@@ -37,7 +37,7 @@ local recipes = {
     { 2, "default:desert_sand 20", "default:desert_sand 20", "default:desert_sandstone 20"},
     { 2, "default:silver_sand 20", "default:silver_sand 20", "default:silver_sandstone 20"},
     { 2, "technic:mixed_metal_ingot 2", "technic:mixed_metal_ingot 2", "technic:composite_plate 4"},
-    { 2, "technic:coal_dust 12", "technic:coal_dust 12", "technic:carbon_plate 8"},
+    { 2, "technic:coal_dust 24", "technic:coal_dust 24", "technic:carbon_plate 4"},
 }
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_mass_compressor_recipe({

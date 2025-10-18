@@ -10,8 +10,8 @@ core.register_craft({
 core.register_craft({
     output = "technic_many_machines:hv_masscompressor",
     recipe = {
-        {"technic:composite_plate", "technic:mv_compressor", "technic:composite_plate"},
-        {"technic_many_machines:compressor_piston", "technic:hv_transformer", "technic_many_machines:compressor_piston"},
-        {"technic:carbon_plate", "technic:hv_cable", "technic:carbon_plate"},
+        {"technic:composite_plate", "technic_many_machines:compressor_piston", "technic:composite_plate"},
+        {"technic:hv_cable", "technic:hv_transformer", "default:tinblock"},
+        {"technic:carbon_plate", "technic:mv_compressor", "technic:carbon_plate"},
     }
 })

@@ -1,5 +1,6 @@
+--compressor, but faster and has two slots now for annoying people
 -- for whatever reason you want to make your own mass compressor
-function technic.register_mass_compressor(data)
+function technic_many_machines.register_mass_compressor(data)
 	data.typename = "mass_compressing"
 	data.machine_name = "masscompressor"
 	data.machine_desc = technic.getter("%s Mass Compressor")
@@ -8,11 +9,8 @@ function technic.register_mass_compressor(data)
 end
 --we be mass compressing now
 technic.register_recipe_type("mass_compressing", {description = "Mass Compressing", input_size = 2})
-technic.register_mass_compressor({tier = "HV", demand = {1600, 1200, 800}, speed = 4, upgrade = 1, tube = 1})
-core.register_craftitem("technic_many_machines:compressor_piston", {
-    description = "Compressor Piston",
-    inventory_image = "technic_many_machines_compressor_piston.png",
-})
+technic_many_machines.register_mass_compressor({tier = "HV", demand = {6000, 4500, 3000}, speed = 1, upgrade = 1, tube = 1})
+--shoving an animation down your throat
 core.override_item("technic_many_machines:hv_masscompressor_active", {
     tiles = {
         "technic_many_machines_hv_masscompressor_top.png",
@@ -28,28 +26,23 @@ core.override_item("technic_many_machines:hv_masscompressor_active", {
             length = 1, }, },
         },
 })
-core.register_craft({
-    output = "technic_many_machines:compressor_piston",
-    recipe = {
-        {"technic:cast_iron_ingot", "basic_materials:carbon_steel_bar", "technic:cast_iron_ingot"},
-        {"technic:cast_iron_ingot", "basic_materials:carbon_steel_bar", "technic:cast_iron_ingot"},
-        {"technic:carbon_plate", "technic:carbon_plate", "technic:carbon_plate"},
-    }
-})
-core.register_craft({
-    output = "technic_many_machines:hv_masscompressor",
-    recipe = {
-        {"technic:composite_plate", "technic:mv_compressor", "technic:composite_plate"},
-        {"technic_many_machines:compressor_piston", "technic:hv_transformer", "technic_many_machines:compressor_piston"},
-        {"technic:carbon_plate", "technic:hv_cable", "technic:carbon_plate"},
-    }
-})
-function technic.register_mass_compressor_recipe(data)
+function technic_many_machines.register_mass_compressor_recipe(data)
     data.time = data.time or 4
     technic.register_recipe("mass_compressing", data)
 end
-technic.register_mass_compressor_recipe({
-    input = {"default:stone", "default:stone"},
-    output = "technic:composite_plate",
-    time = 2,
-})
+--not wanting to type a lot, also you might not wanna replace you compressor with this, this thing might be too heavy duty for some things
+local recipes = {
+    { 2, "default:copper_ingot 10", "default:copper_ingot 10", "technic:copper_plate 4"},
+    { 2, "default:sand 20", "default:sand 20", "default:sandstone 20"},
+    { 2, "default:desert_sand 20", "default:desert_sand 20", "default:desert_sandstone 20"},
+    { 2, "default:silver_sand 20", "default:silver_sand 20", "default:silver_sandstone 20"},
+    { 2, "technic:mixed_metal_ingot 2", "technic:mixed_metal_ingot 2", "technic:composite_plate 4"},
+    { 2, "technic:coal_dust 12", "technic:coal_dust 12", "technic:carbon_plate 8"},
+}
+for _, recipe in ipairs(recipes) do
+    technic_many_machines.register_mass_compressor_recipe({
+        time = recipe[1],
+        input = {recipe[2], recipe[3]},
+        output = recipe[4],
+    })
+end

@@ -36,6 +36,7 @@ local recipes = {
     { 2, "default:silver_sand 20", "default:silver_sand 20", "default:silver_sandstone 20"},
     { 2, "technic:mixed_metal_ingot 2", "technic:mixed_metal_ingot 2", "technic:composite_plate 4"},
     { 2, "technic:coal_dust 24", "technic:coal_dust 24", "technic:carbon_plate 4"},
+	{ 10,"default:coal_lump 25", "default:coal_lump 25", "default:diamond"},
 }
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_mass_compressor_recipe({

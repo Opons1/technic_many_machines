@@ -4,8 +4,7 @@ function technic_many_machines.register_mass_compressor(data)
 	data.typename = "mass_compressing"
 	data.machine_name = "masscompressor"
 	data.machine_desc = technic.getter("%s Mass Compressor")
-
-	technic.register_base_machine(data)
+    technic.register_base_machine(data)
 end
 technic.register_recipe_type("mass_compressing", {description = "Mass Compressing", input_size = 2})
 technic_many_machines.register_mass_compressor({tier = "HV", demand = {6000, 4500, 3000}, speed = 1, upgrade = 1, tube = 1})

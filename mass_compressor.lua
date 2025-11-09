@@ -21,8 +21,9 @@ core.override_item("technic_many_machines:hv_masscompressor_active", {
             aspect_w = 16,
             aspect_h = 16,
             length = 1, }, },
-        },
-})
+        }})
+core.override_item("technic_many_machines:hv_masscompressor", {
+    description = "HV Mass Compressor\n"..minetest.colorize("#84bac1ff", "Compresses items in bulk with new recipes")})
 function technic_many_machines.register_mass_compressor_recipe(data)
     data.time = data.time or 4
     technic.register_recipe("mass_compressing", data)
@@ -41,6 +42,5 @@ for _, recipe in ipairs(recipes) do
     technic_many_machines.register_mass_compressor_recipe({
         time = recipe[1],
         input = {recipe[2], recipe[3]},
-        output = recipe[4],
-    })
+        output = recipe[4]})
 end

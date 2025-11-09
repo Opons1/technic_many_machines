@@ -6,8 +6,6 @@ function technic_many_machines.register_advanced_alloy_furnace(data)
 end
 technic.register_recipe_type("advanced_alloying", {description = "Advanced Alloying", input_size = 3})
 technic_many_machines.register_advanced_alloy_furnace({tier = "HV", demand = {5000, 4250, 3500}, speed = 1, upgrade = 1, tube = 1})
-technic.register_recipe_type("mass_compressing", {description = "Mass Compressing", input_size = 2})
-technic_many_machines.register_mass_compressor({tier = "HV", demand = {6000, 4500, 3000}, speed = 1, upgrade = 1, tube = 1})
 core.override_item("technic_many_machines:hv_advancedalloyfurnace_active", {
     tiles = {
         "technic_many_machines_hv_advancedalloyfurnace_top.png^pipeworks_tube_connection_metallic.png",

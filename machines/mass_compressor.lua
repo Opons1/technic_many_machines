@@ -1,13 +1,20 @@
 --compressor, but faster and has two slots now for annoying people
 -- for whatever reason you want to make your own mass compressor
-function technic_many_machines.register_mass_compressor(data)
-	data.typename = "mass_compressing"
-	data.machine_name = "masscompressor"
-	data.machine_desc = technic.getter("%s Mass Compressor")
-    technic.register_base_machine(data)
-end
-technic.register_recipe_type("mass_compressing", {description = "Mass Compressing", input_size = 2})
-technic_many_machines.register_mass_compressor({tier = "HV", demand = {6000, 4500, 3000}, speed = 1, upgrade = 1, tube = 1})
+
+technic.register_recipe_type("bulk_compressing", {
+    description = "Bulk Compressing",
+    icon = "technic_many_machines_hv_masscompressor_front.png",
+    input_size = 2
+})
+technic.register_base_machine("technic_many_machines:hv_masscompressor", {
+    description = "HV Mass Compressor\n"..minetest.colorize("#84bac1ff", "Compresses items in bulk with new recipes"),
+    typename = "bulk_compressing",
+    tier = "HV",
+    demand = {6000, 4500, 3000},
+    speed = 1,
+    upgrade = 1,
+    tube = 1
+})
 core.override_item("technic_many_machines:hv_masscompressor_active", {
     tiles = {
         "technic_many_machines_hv_masscompressor_top.png^pipeworks_tube_connection_metallic.png",
@@ -22,11 +29,9 @@ core.override_item("technic_many_machines:hv_masscompressor_active", {
             aspect_h = 16,
             length = 1, }, },
         }})
-core.override_item("technic_many_machines:hv_masscompressor", {
-    description = "HV Mass Compressor\n"..minetest.colorize("#84bac1ff", "Compresses items in bulk with new recipes")})
-function technic_many_machines.register_mass_compressor_recipe(data)
+function technic_many_machines.register_bulk_compressor_recipe(data)
     data.time = data.time or 4
-    technic.register_recipe("mass_compressing", data)
+    technic.register_recipe("bulk_compressing", data)
 end
 --not wanting to type a lot, also you might not wanna replace you compressor with this, this thing might be too heavy duty for some things
 local recipes = {
@@ -39,8 +44,9 @@ local recipes = {
 	{ 10,"default:coal_lump 25", "default:coal_lump 25", "default:diamond"},
 }
 for _, recipe in ipairs(recipes) do
-    technic_many_machines.register_mass_compressor_recipe({
+    technic_many_machines.register_bulk_compressor_recipe({
         time = recipe[1],
         input = {recipe[2], recipe[3]},
         output = recipe[4]})
 end
+

@@ -15,3 +15,4 @@ dofile(core.get_modpath("technic_many_machines").."/machines/advanced_alloy_furn
 dofile(core.get_modpath("technic_many_machines").."/machines/bulk_alloy_furnace.lua")
 dofile(core.get_modpath("technic_many_machines").."/nodes.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/cobblegen.lua")
+dofile(core.get_modpath("technic_many_machines").."/machines/movingwalkway.lua")

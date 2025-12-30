@@ -6,6 +6,7 @@ technic.register_recipe_type("bulk_compressing", {
     icon = "technic_many_machines_hv_masscompressor_front.png",
     input_size = 2
 })
+
 technic.register_base_machine("technic_many_machines:hv_masscompressor", {
     description = "HV Mass Compressor\n"..minetest.colorize("#84bac1ff", "Compresses items in bulk with new recipes"),
     typename = "bulk_compressing",
@@ -15,6 +16,7 @@ technic.register_base_machine("technic_many_machines:hv_masscompressor", {
     upgrade = 1,
     tube = 1
 })
+
 core.override_item("technic_many_machines:hv_masscompressor_active", {
     tiles = {
         "technic_many_machines_hv_masscompressor_top.png^pipeworks_tube_connection_metallic.png",
@@ -29,10 +31,12 @@ core.override_item("technic_many_machines:hv_masscompressor_active", {
             aspect_h = 16,
             length = 1, }, },
         }})
+
 function technic_many_machines.register_bulk_compressor_recipe(data)
     data.time = data.time or 4
     technic.register_recipe("bulk_compressing", data)
 end
+
 --not wanting to type a lot, also you might not wanna replace you compressor with this, this thing might be too heavy duty for some things
 local recipes = {
     { 2, "default:copper_ingot 10", "default:copper_ingot 10", "technic:copper_plate 4"},

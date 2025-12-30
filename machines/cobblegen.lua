@@ -20,21 +20,21 @@ technic.register_base_machine("technic_many_machines:lv_cobble_generator", {
 })
 core.override_item("technic_many_machines:lv_cobble_generator", {
     tiles = {
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_bottom.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_lv_side.png",
+        "technic_many_machines_lv_bottom.png",
+        "technic_many_machines_lv_side.png",
+        "technic_many_machines_lv_side.png",
+        "technic_many_machines_lv_side.png",
         "technic_many_machines_lv_cobblestone_generator.png",
         }
 })
 core.override_item("technic_many_machines:lv_cobble_generator_active", {
     tiles = {
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_bottom.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_lv_side.png",
+        "technic_many_machines_lv_bottom.png",
+        "technic_many_machines_lv_side.png",
+        "technic_many_machines_lv_side.png",
+        "technic_many_machines_lv_side.png",
          {name = "technic_many_machines_lv_cobblestone_generator_active.png",
         animation = {
             type = "vertical_frames",

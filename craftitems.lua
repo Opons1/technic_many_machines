@@ -135,3 +135,10 @@ core.register_craftitem("technic_many_machines:uranium0_nugget", {
     description = "0.0%-Fissile Uranium Nugget",
     inventory_image = "technic_many_machines_nugget.png^[colorize:#00FF00:180",
 })
+
+--gears
+core.register_craftitem("technic_many_machines:wrought_iron_gear", {
+    description = "wrought iron Gear",
+    inventory_image = "tms_gear.png^[colorize:#3A3B40:180",
+})
+

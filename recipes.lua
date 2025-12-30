@@ -75,6 +75,14 @@ for _, data in ipairs(cooking_recipes) do
         output = data[3],
     })
 end
+--gear recipes
+core.register_craft({
+    output = "technic_many_machines:wrought_iron_gear",
+    recipe = {
+        {"technic_many_machines:wrought_iron_nugget", "technic_many_machines:wrought_iron_nugget", "technic_many_machines:wrought_iron_nugget"},
+        {"technic_many_machines:wrought_iron_nugget", "default:steel_ingot", "technic_many_machines:wrought_iron_nugget"},
+        {"technic_many_machines:wrought_iron_nugget", "technic_many_machines:wrought_iron_nugget", "technic_many_machines:wrought_iron_nugget"},
+}})
 --grinder recipes
 local grinder_recipes = {
     {0.5, "technic_many_machines:brass_nugget", "technic_many_machines:brass_dust_small"},

@@ -40,8 +40,32 @@ core.override_item("technic_many_machines:lv_cobble_generator_active", {
             type = "vertical_frames",
             aspect_w = 16,
             aspect_h = 16,
-            length = 1, }, },
-        }
+            length = 1, }, 
+        },
+    }
+})
+core.register_craft({
+    output = "technic_many_machines:lv_cobble_generator",
+    recipe = {
+        {"technic_many_machines:wrought_iron_gear", "technic:lv_transformer", "technic_many_machines:wrought_iron_gear"},
+        {"bucket:bucket_water", "technic:machine_casing", "bucket:bucket_lava"},
+        {"technic:cast_iron_ingot", "technic:lv_cable", "technic:cast_iron_ingot"},
+    },
+    replacements = {
+        {"bucket:bucket_water", "bucket:bucket_empty"},
+        {"bucket:bucket_lava", "bucket:bucket_empty"},
+    }
+})
+core.register_craft({
+    output = "technic_many_machines:lv_cobble_generator",
+    recipe = {
+        {"technic_many_machines:wrought_iron_gear", "technic:lv_transformer", "technic_many_machines:wrought_iron_gear"},
+        {"default:ice", "technic:machine_casing", "bucket:bucket_lava"},
+        {"technic:cast_iron_ingot", "technic:lv_cable", "technic:cast_iron_ingot"},
+    },
+    replacements = {
+        {"bucket:bucket_lava", "bucket:bucket_empty"},
+    }
 })
 --[[
 technic.register_base_machine("technic_many_machines:mv_cobble_generator", {

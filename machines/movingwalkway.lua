@@ -48,7 +48,7 @@ core.register_node("technic_many_machines:lv_moving_walkway", {
         local node = core.get_node(pos)
         local dir = node.param2
         if power >= 80 then
-            local objects = core.get_objects_inside_radius({x=pos.x, y=pos.y+0.5, z=pos.z}, 0.75)
+            local objects = core.get_objects_inside_radius({x=pos.x, y=pos.y+0.5, z=pos.z}, 0.5)
             for _, obj in ipairs(objects) do
                 if obj:is_player() then
                     local startpos = obj:get_pos()
@@ -84,3 +84,11 @@ core.register_node("technic_many_machines:lv_moving_walkway", {
     end,
 })
 technic.register_machine("LV", "technic_many_machines:lv_moving_walkway", technic.receiver)
+core.register_craft({
+    output = "technic_many_machines:lv_moving_walkway",
+    recipe = {
+        {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
+        {"technic_many_machines:wrought_iron_gear", "technic:machine_casing", "technic_many_machines:wrought_iron_gear"},
+        {"basic_materials:motor", "technic:lv_cable", "basic_materials:motor"},
+    }
+})

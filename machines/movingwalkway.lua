@@ -88,7 +88,7 @@ core.register_craft({
     output = "technic_many_machines:lv_moving_walkway",
     recipe = {
         {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
-        {"technic_many_machines:wrought_iron_gear", "technic:machine_casing", "technic_many_machines:wrought_iron_gear"},
+        {"basic_materials:gear_steel", "technic:machine_casing", "basic_materials:gear_steel"},
         {"basic_materials:motor", "technic:lv_cable", "basic_materials:motor"},
     }
 })

@@ -42,14 +42,12 @@ table.insert(minetest.registered_on_mods_loaded, 1, function()
     for nodename, def in pairs(nodes) do
         local is_group_tree = minetest.get_item_group(nodename, "tree") > 0
         if is_group_tree then
-            core.log("warning", "Registering sawmill recipe for " .. nodename)
             local output = core.get_craft_result({method = "normal", width = 1, items = {nodename}})
             local does_output_exist = output and output.item and not output.item:is_empty()
             if does_output_exist then
-                core.log("warning", "Output for " .. nodename .. " is " .. output.item:to_string())
                 local output_name = output.item:get_name()
                 if minetest.get_item_group(output_name, "wood") > 0 then
-                    core.log("warning", "Registering sawmill recipe for " .. nodename .. " with output " .. output_name)
+                    core.log("action", "Registering sawmill recipe for " .. nodename .. " with output " .. output_name)
                     technic.register_recipe("sawmilling", {
                         input = {nodename},
                         output = output_name .. " 8",

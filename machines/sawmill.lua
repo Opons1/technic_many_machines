@@ -51,7 +51,7 @@ table.insert(minetest.registered_on_mods_loaded, 1, function()
                     technic.register_recipe("sawmilling", {
                         input = {nodename},
                         output = output_name .. " 8",
-                        time = 4,
+                        time = 1,
                     })
                 end
             end

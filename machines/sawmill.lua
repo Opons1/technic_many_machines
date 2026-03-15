@@ -58,3 +58,11 @@ table.insert(minetest.registered_on_mods_loaded, 1, function()
         end
     end
 end)
+core.register_craft({
+    output = "technic_many_machines:hv_sawmill",
+    recipe = {
+        {"technic:composite_plate", "technic:hv_transformer", "technic:composite_plate"},
+        {"technic:diamond_drill_head", "technic:machine_casing", "technic_many_machines:carbon_plate"},
+        {"technic:composite_place", "technic:hv_cable", "technic:composite_plate"},
+    }
+})

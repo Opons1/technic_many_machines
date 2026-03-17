@@ -75,6 +75,7 @@ technic.register_base_machine("technic_many_machines:mv_cobble_generator", {
     tier = "MV", 
     speed = 3,
     demand = {900, 750, 600},
+    upgrade = 1,
     tube = 1,
 })
 core.override_item("technic_many_machines:mv_cobble_generator", {
@@ -118,6 +119,7 @@ technic.register_base_machine("technic_many_machines:hv_cobble_generator", {
     tier = "HV", 
     speed = 9,
     demand = {2700, 2250, 1800},
+    upgrade = 1,
     tube = 1,
 })
 core.override_item("technic_many_machines:hv_cobble_generator", {

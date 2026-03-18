@@ -7,7 +7,7 @@ core.register_craftitem("technic_many_machines:crypto", {
 core.register_abm({
     label = "Active Cryptominer Counter",
     nodenames = {"technic_many_machines:hv_cryptominer"},
-    interval = 30, -- Runs every 30 seconds
+    interval = 30,
     chance = 1,
     action = function(pos)
         local current_time = core.get_gametime()
@@ -17,8 +17,6 @@ core.register_abm({
             temp_count = 0
             last_reset_time = math.floor(current_time / 30) * 30
         end
-
-        -- Add this specific node to the count for the current cycle
         local meta = core.get_meta(pos)
         local level = meta:get_int("upgrades")
         temp_count = temp_count + 1 + level
@@ -114,7 +112,6 @@ core.register_node("technic_many_machines:hv_cryptominer", {
         local upgrade_count = 0
         for i=1, inv:get_size("upgrades") do
             local stack = inv:get_stack("upgrades", i)
-            -- Change "technic:control_logic_unit" to whatever item you want to be the upgrade
             if stack:get_name() == "technic_many_machines:hv_cryptominer" then
                 upgrade_count = upgrade_count + stack:get_count()
             end

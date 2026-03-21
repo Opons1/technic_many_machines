@@ -7,7 +7,7 @@ core.register_craftitem("technic_many_machines:crypto", {
 core.register_abm({
     label = "Active Cryptominer Counter",
     nodenames = {"technic_many_machines:hv_cryptominer"},
-    interval = 30,
+    interval = 3,
     chance = 1,
     action = function(pos)
         local current_time = core.get_gametime()
@@ -25,7 +25,7 @@ core.register_abm({
 })
 
 local cryptocalc = function(miners)
-    return math.ceil(300*miners^0.4)
+    return math.ceil(300*miners^0.33)
 end
 local formspec = "size[10,8.5]" ..
     "no_prepend[]" ..

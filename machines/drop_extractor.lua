@@ -73,7 +73,7 @@ technic.register_base_machine("technic_many_machines:mv_drop_extractor", {
     description = "MV Drop Extractor",
     typename = "technic_many_machines:drop_extracting",
     tier = "MV",
-    demand = {2000, 1500, 1000},
+    demand = {1500, 1100, 700},
     speed = 2,
     upgrade = 1,
     tube = 1
@@ -82,7 +82,7 @@ technic.register_base_machine("technic_many_machines:hv_drop_extractor", {
     description = "HV Drop Extractor",
     typename = "technic_many_machines:drop_extracting",
     tier = "HV",
-    demand = {6000, 4500, 3000},
+    demand = {3000, 2200, 1400},
     speed = 4,
     upgrade = 1,
     tube = 1

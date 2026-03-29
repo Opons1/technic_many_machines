@@ -10,7 +10,7 @@ technic.register_cable("technic_many_machines:ev_cable", {
 ]]
 --i need help, the code in the cryptominer is garbage but idk how to make better
 local enable_cryptominer = core.settings:get_bool("technic_many_machines_enable_cryptominer") or false
-technic_many_machines.cryptominer_output = core.settings:get_string("technic_many_machines_cryptominer_output") or ""
+technic_many_machines.cryptominer_output = core.settings:get("technic_many_machines_cryptominer_output") or ""
 
 dofile(core.get_modpath("technic_many_machines").."/craftitems.lua")
 dofile(core.get_modpath("technic_many_machines").."/recipes.lua")

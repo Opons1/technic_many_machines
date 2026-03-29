@@ -1,3 +1,4 @@
+local mineroutput = core.settings:get("technic_many_machines_cryptominer_output")
 technic_many_machines.active_miner_count = 0
 local temp_count = 0
 local last_reset_time = 0
@@ -54,6 +55,15 @@ local formspec = "size[10,8.5]" ..
 core.register_node("technic_many_machines:hv_cryptominer", {
     description = "HV Crypto Miner",
     groups = {cracky = 2, oddly_breakable_by_hand = 1, technic_machine = 1, technic_hv = 1},
+    tiles = {
+        "technic_many_machines_hv_side.png",
+        "technic_many_machines_hv_bottom.png",
+        "technic_many_machines_hv_side.png", 
+        "technic_many_machines_hv_side.png",
+        "technic_many_machines_hv_side.png",
+        "technic_many_machines_hv_crypto_miner.png",
+    },
+    paramtype2 = "facedir",
     on_construct = function(pos)
         local meta = core.get_meta(pos)
         local inv = meta:get_inventory()
@@ -98,7 +108,7 @@ core.register_node("technic_many_machines:hv_cryptominer", {
             meta:set_string("infotext", "HV Cryptominer Active")
             if time >= timeuntilnext then
                 local inv = meta:get_inventory()
-                inv:add_item("dst", "technic_many_machines:crypto")
+                inv:add_item("dst", mineroutput)
                 meta:set_int("totalyield", totalyield + 1)
                 timeuntilnext = difficulty
                 meta:set_int("timeuntilnext", difficulty)

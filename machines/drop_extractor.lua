@@ -27,6 +27,7 @@ table.insert(core.registered_on_mods_loaded, 1, function()
                 if drop.items then
                     for _, item in ipairs(drop.items) do
                         local rarity = item.rarity or 1
+                        estimated_time = estimated_time + rarity
                         if item.items then
                             for _, subitem in ipairs(item.items) do
                                 if subitem == nodename then
@@ -51,11 +52,11 @@ table.insert(core.registered_on_mods_loaded, 1, function()
             end
         end
         if #drop_items >= 1 and #drop_items <= 4 then
-            core.log("action", "Registering drop extracting recipe for " .. nodename.." "..#drop_items.. " with drops: " .. table.concat(drop_items, ", "))
+            core.log("action", "Registering drop extracting recipe for " .. nodename.." "..#drop_items.. " with drops in "..estimated_time.. " seconds: " .. table.concat(drop_items, ", "))
             technic.register_recipe("technic_many_machines:drop_extracting", {
                 input = {nodename.." "..#drop_items},
                 output = drop_items,
-                time = 1,
+                time = estimated_time,
             })
         end
     end
@@ -149,11 +150,27 @@ core.override_item("technic_many_machines:hv_drop_extractor", {
         "technic_many_machines_hv_side.png^tms_gear.png"
     }
 })
-
-
-
-
-
-
-
-
+core.register_craft({
+    output = "technic_many_machines:lv_drop_extractor",
+    recipe = {
+        {"default:steel_ingot", "technic:lv_cable", "default:steel_ingot"},
+        {"default:pick_steel", "technic:machine_casing", "basic_materials:gear_steel"},
+        {"default:steel_ingot", "technic:lv_cable", "default:steel_ingot"},
+    }
+})
+core.register_craft({
+    output = "technic_many_machines:mv_drop_extractor",
+    recipe = {
+        {"technic:stainless_steel_ingot", "technic:mv_cable", "technic:stainless_steel_ingot"},
+        {"default:pick_mese", "technic_many_machines:lv_drop_extractor", "basic_materials:gear_steel"},
+        {"technic:stainless_steel_ingot", "technic:mv_cable", "technic:stainless_steel_ingot"},
+    }
+})
+core.register_craft({
+    output = "technic_many_machines:hv_drop_extractor",
+    recipe = {
+        {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
+        {"default:pick_diamond", "technic_many_machines:mv_drop_extractor", "basic_materials:gear_steel"},
+        {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
+    }
+})

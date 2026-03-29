@@ -63,14 +63,14 @@ table.insert(core.registered_on_mods_loaded, 1, function()
     end
 end)
 technic.register_base_machine("technic_many_machines:lv_drop_extractor", {
-    description = "LV Drop Extractor\n"..core.colorize("#84bac1ff", "Extracts drops from nodes (only works on nodes with 2-4 drops)"),
+    description = "LV Drop Extractor",
     typename = "technic_many_machines:drop_extracting",
     tier = "LV",
     demand = {400},
     speed = 1,
 })
 technic.register_base_machine("technic_many_machines:mv_drop_extractor", {
-    description = "MV Drop Extractor\n"..core.colorize("#84bac1ff", "Extracts drops from nodes (only works on nodes with 2-4 drops)"),
+    description = "MV Drop Extractor",
     typename = "technic_many_machines:drop_extracting",
     tier = "MV",
     demand = {2000, 1500, 1000},
@@ -79,7 +79,7 @@ technic.register_base_machine("technic_many_machines:mv_drop_extractor", {
     tube = 1
 })
 technic.register_base_machine("technic_many_machines:hv_drop_extractor", {
-    description = "HV Drop Extractor\n"..core.colorize("#84bac1ff", "Extracts drops from nodes (only works on nodes with 2-4 drops)"),
+    description = "HV Drop Extractor",
     typename = "technic_many_machines:drop_extracting",
     tier = "HV",
     demand = {6000, 4500, 3000},

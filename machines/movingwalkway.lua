@@ -1,4 +1,4 @@
-local smootherwalkway = minetest.settings:get_bool("technic_many_machines.walkwaysmooth") or false
+local smootherwalkway = core.settings:get_bool("technic_many_machines.walkwaysmooth") or false
 local walkwayspeed = core.settings:get_bool("technic_many_machines.walkway_speed") or 1
 local animspeed = 0.5/walkwayspeed
 local time

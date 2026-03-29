@@ -5,7 +5,7 @@ technic.register_recipe_type("sawmilling", {
     output_size = 4,
 })
 technic.register_base_machine("technic_many_machines:hv_sawmill", {
-    description = "HV Sawmill\n"..minetest.colorize("#84bac1ff", "Used for doubling plank yield"),
+    description = "HV Sawmill\n"..core.colorize("#84bac1ff", "Used for doubling plank yield"),
     typename = "sawmilling",
     tier = "HV",
     demand = {3000, 2250, 1500},
@@ -37,16 +37,16 @@ core.override_item("technic_many_machines:hv_sawmill", {
         "technic_many_machines_hv_sawmill_front.png",
 }})
 --I got stuck here and asked ai for help, and all it changed was the core.register_on_mods_loaded with this table.insert? what is this
-table.insert(minetest.registered_on_mods_loaded, 1, function()
-    local nodes = minetest.registered_nodes
+table.insert(core.registered_on_mods_loaded, 1, function()
+    local nodes = core.registered_nodes
     for nodename, def in pairs(nodes) do
-        local is_group_tree = minetest.get_item_group(nodename, "tree") > 0
+        local is_group_tree = core.get_item_group(nodename, "tree") > 0
         if is_group_tree then
             local output = core.get_craft_result({method = "normal", width = 1, items = {nodename}})
             local does_output_exist = output and output.item and not output.item:is_empty()
             if does_output_exist then
                 local output_name = output.item:get_name()
-                if minetest.get_item_group(output_name, "wood") > 0 then
+                if core.get_item_group(output_name, "wood") > 0 then
                     core.log("action", "Registering sawmill recipe for " .. nodename .. " with output " .. output_name)
                     technic.register_recipe("sawmilling", {
                         input = {nodename},

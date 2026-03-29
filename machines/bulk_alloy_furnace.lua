@@ -1,6 +1,6 @@
 technic.register_base_machine("technic_many_machines:hv_alloy_furnace", {
     typename = "alloy",
-    description = "HV Bulk Alloy Furnace\n"..minetest.colorize("#84bac1ff", "6 times faster than a MV alloy furnace"),
+    description = "HV Bulk Alloy Furnace\n"..core.colorize("#84bac1ff", "6 times faster than a MV alloy furnace"),
     tier = "HV",
     demand = {18000, 14000, 10000},
     speed = 9,

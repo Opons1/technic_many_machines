@@ -1,14 +1,15 @@
 --compressor, but faster and has two slots now for annoying people
 -- for whatever reason you want to make your own mass compressor
+local S = core.get_translator("technic_many_machines")
 
 technic.register_recipe_type("bulk_compressing", {
-    description = "Bulk Compressing",
+    description = S("Bulk Compressing"),
     icon = "technic_many_machines_hv_masscompressor_front.png",
     input_size = 2
 })
 
 technic.register_base_machine("technic_many_machines:hv_masscompressor", {
-    description = "HV Mass Compressor\n"..minetest.colorize("#84bac1ff", "Compresses items in bulk with new recipes"),
+    description = S("HV Mass Compressor") .. "\n" .. core.colorize("#84bac1ff", S("Compresses items in bulk with new recipes")),
     typename = "bulk_compressing",
     tier = "HV",
     demand = {6000, 4500, 3000},
@@ -46,6 +47,7 @@ local recipes = {
     { 2, "technic:mixed_metal_ingot 2", "technic:mixed_metal_ingot 2", "technic:composite_plate 4"},
     { 2, "technic:coal_dust 24", "technic:coal_dust 24", "technic:carbon_plate 4"},
 	{ 10,"default:coal_lump 25", "default:coal_lump 25", "default:diamond"},
+    { 4, "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_plate 2"}
 }
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_bulk_compressor_recipe({

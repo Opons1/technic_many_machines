@@ -11,16 +11,15 @@ technic.register_cable("technic_many_machines:ev_cable", {
 --i need help, the code in the cryptominer is garbage but idk how to make better
 local enable_cryptominer = core.settings:get_bool("technic_many_machines_enable_cryptominer") or false
 technic_many_machines.cryptominer_output = core.settings:get("technic_many_machines_cryptominer_output") or ""
-
-dofile(core.get_modpath("technic_many_machines").."/craftitems.lua")
-dofile(core.get_modpath("technic_many_machines").."/recipes.lua")
+--items
+dofile(core.get_modpath("technic_many_machines").."/items.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/mass_compressor.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/advanced_alloy_furnace.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/bulk_alloy_furnace.lua")
-dofile(core.get_modpath("technic_many_machines").."/nodes.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/cobblegen.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/movingwalkway.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/sawmill.lua")
+dofile(core.get_modpath("technic_many_machines").."/recipes.lua")
 --fun unoptmized fun
 if enable_cryptominer then
 dofile(core.get_modpath("technic_many_machines").."/machines/cryptominer.lua")

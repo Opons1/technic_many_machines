@@ -1,10 +1,11 @@
+local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("advanced_alloying", {
-    description = "Advanced Alloying",
+    description = S("Advanced Alloying"),
     icon = "technic_many_machines_hv_advancedalloyfurnace_front.png",
     input_size = 3
 })
 technic.register_base_machine("technic_many_machines:hv_advancedalloyfurnace", {
-    description = "HV Advanced Alloy Furnace\n"..core.colorize("#84bac1ff", "Used for different alloying processes\n(not useful yet)"),
+    description = S("HV Advanced Alloy Furnace").."\n"..core.colorize("#84bac1ff", S("Used for different alloying processes") .. "\n" .. S("(not useful yet)")),
     typename = "advanced_alloying",
     tier = "HV",
     demand = {8000, 6500, 5000},
@@ -39,6 +40,7 @@ end
 local recipes = {
 { 8, "technic:coal_dust 2", "default:steel_ingot 4", "technic:chromium_ingot 1", "technic:stainless_steel_ingot 5"},
 { 6, "technic:coal_dust 2", "technic:steel_dust 4", "technic:chromium_dust 1", "technic:stainless_steel_ingot 5"},
+{ 8, "technic:uranium0_ingot", "technic:stainless_steel_ingot 3", "default:mese_crystal_fragment", "technic_many_machines:radiant_alloy_ingot 4"},
 }
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_advanced_alloy_furnace_recipe({

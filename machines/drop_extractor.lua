@@ -1,6 +1,7 @@
 --TEXTURE IS TEMPORARY
+local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("technic_many_machines:drop_extracting", {
-    description = "Drop Extracting",
+    description = S("Drop Extracting"),
     input_size = 1,
     output_size = 4,
 })
@@ -63,14 +64,14 @@ table.insert(core.registered_on_mods_loaded, 1, function()
     end
 end)
 technic.register_base_machine("technic_many_machines:lv_drop_extractor", {
-    description = "LV Drop Extractor",
+    description = S("LV Drop Extractor"),
     typename = "technic_many_machines:drop_extracting",
     tier = "LV",
     demand = {400},
     speed = 1,
 })
 technic.register_base_machine("technic_many_machines:mv_drop_extractor", {
-    description = "MV Drop Extractor",
+    description = S("MV Drop Extractor"),
     typename = "technic_many_machines:drop_extracting",
     tier = "MV",
     demand = {1500, 1100, 700},
@@ -79,7 +80,7 @@ technic.register_base_machine("technic_many_machines:mv_drop_extractor", {
     tube = 1
 })
 technic.register_base_machine("technic_many_machines:hv_drop_extractor", {
-    description = "HV Drop Extractor",
+    description = S("HV Drop Extractor"),
     typename = "technic_many_machines:drop_extracting",
     tier = "HV",
     demand = {3000, 2200, 1400},
@@ -98,7 +99,7 @@ core.override_item("technic_many_machines:lv_drop_extractor_active", {
     }
 })
 core.override_item("technic_many_machines:lv_drop_extractor", {
-    short_description = "LV Drop Extractor",
+    short_description = S("LV Drop Extractor"),
     tiles = {
         "technic_many_machines_lv_side.png",
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
@@ -119,7 +120,7 @@ core.override_item("technic_many_machines:mv_drop_extractor_active", {
     }
 })
 core.override_item("technic_many_machines:mv_drop_extractor", {
-    short_description = "MV Drop Extractor",
+    short_description = S("MV Drop Extractor"),
     tiles = {
         "technic_many_machines_mv_side.png",
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
@@ -140,7 +141,7 @@ core.override_item("technic_many_machines:hv_drop_extractor_active", {
     }
 })
 core.override_item("technic_many_machines:hv_drop_extractor", {
-    short_description = "HV Drop Extractor",
+    short_description = S("HV Drop Extractor"),
     tiles = {
         "technic_many_machines_hv_side.png",
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
@@ -148,29 +149,5 @@ core.override_item("technic_many_machines:hv_drop_extractor", {
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_side.png^tms_gear.png"
-    }
-})
-core.register_craft({
-    output = "technic_many_machines:lv_drop_extractor",
-    recipe = {
-        {"default:steel_ingot", "technic:lv_cable", "default:steel_ingot"},
-        {"default:pick_steel", "technic:machine_casing", "basic_materials:gear_steel"},
-        {"default:steel_ingot", "technic:lv_cable", "default:steel_ingot"},
-    }
-})
-core.register_craft({
-    output = "technic_many_machines:mv_drop_extractor",
-    recipe = {
-        {"technic:stainless_steel_ingot", "technic:mv_cable", "technic:stainless_steel_ingot"},
-        {"default:pick_mese", "technic_many_machines:lv_drop_extractor", "basic_materials:gear_steel"},
-        {"technic:stainless_steel_ingot", "technic:mv_cable", "technic:stainless_steel_ingot"},
-    }
-})
-core.register_craft({
-    output = "technic_many_machines:hv_drop_extractor",
-    recipe = {
-        {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
-        {"default:pick_diamond", "technic_many_machines:mv_drop_extractor", "basic_materials:gear_steel"},
-        {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
     }
 })

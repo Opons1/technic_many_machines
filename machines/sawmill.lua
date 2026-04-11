@@ -1,11 +1,12 @@
+local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("sawmilling", {
-    description = "Sawmilling",
+    description = S("Sawmilling"),
     icon = "technic_many_machines_hv_sawmill_front.png",
     input_size = 1,
     output_size = 4,
 })
 technic.register_base_machine("technic_many_machines:hv_sawmill", {
-    description = "HV Sawmill\n"..core.colorize("#84bac1ff", "Used for doubling plank yield"),
+    description = S("HV Sawmill") .. "\n" .. core.colorize("#84bac1ff", S("Used for doubling plank yield")),
     typename = "sawmilling",
     tier = "HV",
     demand = {3000, 2250, 1500},
@@ -58,11 +59,3 @@ table.insert(core.registered_on_mods_loaded, 1, function()
         end
     end
 end)
-core.register_craft({
-    output = "technic_many_machines:hv_sawmill",
-    recipe = {
-        {"technic:composite_plate", "technic:hv_transformer", "technic:composite_plate"},
-        {"technic:diamond_drill_head", "technic:machine_casing", "technic_many_machines:carbon_plate"},
-        {"technic:composite_place", "technic:hv_cable", "technic:composite_plate"},
-    }
-})

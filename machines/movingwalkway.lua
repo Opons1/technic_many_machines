@@ -14,8 +14,9 @@ if smootherwalkway == true then
 else
     time = 0.5
 end
+local S = core.get_translator("technic_many_machines")
 core.register_node("technic_many_machines:lv_moving_walkway", {
-    description = "Moving Walkway",
+    description = S("Moving Walkway"),
     tiles = {
         {
             name = "movingwalkwaytop.png",
@@ -77,18 +78,10 @@ core.register_node("technic_many_machines:lv_moving_walkway", {
         local meta = core.get_meta(pos)
         local input = meta:get_int("LV_EU_input")
         if input >= 80 then
-            meta:set_string("infotext", "Moving Walkway Active")
+            meta:set_string("infotext", S("Moving Walkway Active"))
         else
-            meta:set_string("infotext", "Moving Walkway Unpowered")
+            meta:set_string("infotext", S("Moving Walkway Unpowered"))
         end
     end,
 })
 technic.register_machine("LV", "technic_many_machines:lv_moving_walkway", technic.receiver)
-core.register_craft({
-    output = "technic_many_machines:lv_moving_walkway",
-    recipe = {
-        {"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
-        {"basic_materials:gear_steel", "technic:machine_casing", "basic_materials:gear_steel"},
-        {"basic_materials:motor", "technic:lv_cable", "basic_materials:motor"},
-    }
-})

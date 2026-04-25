@@ -90,7 +90,7 @@ core.register_on_mods_loaded(function()
             description = "Etherium Ore",
             overlay = "ethereal_etherium_ore.png",
             groups = {cracky = 1, stone = 1, level = 2},
-            drop = "ethereal:etherium_crystal 3",
+            drop = "ethereal:etherium_dust 3",
             light_source = 1,
         })
         asteroidoutputnodes["technic_many_machines:asteroid_etherium_ore"] = 3

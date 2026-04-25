@@ -41,6 +41,7 @@ local recipes = {
 { 8, "technic:coal_dust 2", "default:steel_ingot 4", "technic:chromium_ingot 1", "technic:stainless_steel_ingot 5"},
 { 6, "technic:coal_dust 2", "technic:steel_dust 4", "technic:chromium_dust 1", "technic:stainless_steel_ingot 5"},
 { 8, "technic:uranium0_ingot", "technic:stainless_steel_ingot 3", "default:mese_crystal_fragment", "technic_many_machines:radiant_alloy_ingot 4"},
+{ 4, "technic_many_machines:radiant_alloy_dust", "default:mese_crystal_fragment", "technic_many_machines:hv_mb_casing", "technic_many_machines:hv_mb_airlock"},
 }
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_advanced_alloy_furnace_recipe({

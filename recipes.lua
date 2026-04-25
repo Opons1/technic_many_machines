@@ -99,7 +99,15 @@ core.register_craft({
         {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
     }
 })
-
+--asteroidteleporter.lua
+core.register_craft({
+    output = "technic_many_machines:hv_asteroid_teleporter",
+    recipe = {
+        {"default:mese_block", "technic_many_machines:radiant_alloy_plate", "default:mese_block"},
+        {"technic:composite_plate", "technic_many_machines:hv_mb_casing", "technic:composite_plate"},
+        {"technic:control_logic_unit", "technic:hv_transformer", "technic:hv_cable"},
+    }
+})
 --machine parts
 core.register_craft({
     output = "technic_many_machines:compressor_piston",
@@ -108,6 +116,7 @@ core.register_craft({
         {"technic:cast_iron_ingot", "basic_materials:carbon_steel_bar", "technic:cast_iron_ingot"},
         {"technic:carbon_plate", "technic:carbon_plate", "technic:carbon_plate"},
 }})
+
 
 --simple materials
 

@@ -4,6 +4,7 @@ local temp_count = 0
 local last_reset_time = 0
 core.register_craftitem("technic_many_machines:crypto", {
     description = "crypto",
+    inventory_image = "technic_many_machines_crypto.png",
 })
 core.register_abm({
     label = "Active Cryptominer Counter",

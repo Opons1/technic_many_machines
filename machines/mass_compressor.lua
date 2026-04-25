@@ -47,7 +47,9 @@ local recipes = {
     { 2, "technic:mixed_metal_ingot 2", "technic:mixed_metal_ingot 2", "technic:composite_plate 4"},
     { 2, "technic:coal_dust 24", "technic:coal_dust 24", "technic:carbon_plate 4"},
 	{ 10,"default:coal_lump 25", "default:coal_lump 25", "default:diamond"},
-    { 4, "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_plate 2"}
+    { 4, "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_plate 2"},
+    { 2, "technic:machine_casing", "technic:composite_plate", "technic_many_machines:hv_mb_casing"},
+    { 2, "technic_many_machines:hv_mb_casing", "default:obsidian_glass 4", "technic_many_machines:hv_mb_glass"}
 }
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_bulk_compressor_recipe({

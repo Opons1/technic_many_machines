@@ -3,7 +3,7 @@ local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("technic_many_machines:drop_extracting", {
     description = S("Drop Extracting"),
     input_size = 1,
-    output_size = 4,
+    output_size = 6,
 })
 
 table.insert(core.registered_on_mods_loaded, 1, function()
@@ -52,7 +52,7 @@ table.insert(core.registered_on_mods_loaded, 1, function()
                 end
             end
         end
-        if #drop_items >= 1 and #drop_items <= 4 then
+        if #drop_items >= 1 and #drop_items <= 6 then
             core.log("action", "Registering drop extracting recipe for " .. nodename.." "..#drop_items.. " with drops in "..estimated_time.. " seconds: " .. table.concat(drop_items, ", "))
             technic.register_recipe("technic_many_machines:drop_extracting", {
                 input = {nodename.." "..#drop_items},

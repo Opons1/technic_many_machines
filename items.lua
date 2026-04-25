@@ -66,4 +66,61 @@ register_node("radiant_alloy_block", {
     groups = {cracky = 1, level = 2},
     light_source = 7,
 })
+--asteroid nodes
+--it can drop copper, tin, iron, coal, and lead in dust form
+local drops = {
+    max_items = 1,
+    items = {
+        {items = {"technic:copper_dust"}, rarity = 10},
+        {items = {"technic:tin_dust"}, rarity = 10},
+        {items = {"technic:iron_dust"}, rarity = 10},
+        {items = {"technic:coal_dust"}, rarity = 10},
+        {items = {"technic:lead_dust"}, rarity = 10},
+        {items = {"technic_many_machines:asteroid_stone"}},
+    }
+}
+core.register_node("technic_many_machines:asteroid_stone", {
+    description = S("Asteroid Stone"),
+    tiles = {"technic_many_machines_asteroid_stone.png"},   
+    groups = {cracky = 3, stone = 1, level = 2},
+    drop = drops,
+})
 
+--multiblock nodes
+local function register_multiblock_part(name, data)
+    data.groups["multiblock_part"] = 1
+    data.on_destruct = function(pos)
+        local meta = minetest.get_meta(pos)
+        local controller_str = meta:get_string("multiblockcontrollerpos")
+        -- Check if the string is NOT empty before proceeding
+        if controller_str ~= "" then
+            local ctrl_pos = minetest.string_to_pos(controller_str)
+            if ctrl_pos then
+                local ctrl_meta = minetest.get_meta(ctrl_pos)
+                -- Use 0 to represent 'false' in metadata
+                ctrl_meta:set_int("multiblockactive", 0)
+            end
+        end
+    end
+    register_node(name, data)
+end
+register_multiblock_part("hv_mb_airlock", {
+    description = "HV Airlock Part",
+    paramtype = "light",
+    walkable = false,
+    drawtype = "glasslike",
+    tiles = {"technic_many_machines_multiblock_hv_airlock.png^[opacity:200"},
+    groups = {cracky = 1, level = 2},
+})
+register_multiblock_part("hv_mb_glass", {
+    description = "HV Glass Part",
+    paramtype = "light",
+    drawtype = "glasslike",
+    tiles = {"technic_many_machines_multiblock_hv_glass.png^[opacity:200"},
+    groups = {cracky = 1, level = 2},
+})
+register_multiblock_part("hv_mb_casing", {
+    description = "HV Machine Casing Part",
+    tiles = {"technic_many_machines_damaged_hv_frame.png"},
+    groups = {cracky = 1, level = 2},
+})

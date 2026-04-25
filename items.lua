@@ -73,7 +73,7 @@ local drops = {
     items = {
         {items = {"technic:copper_dust"}, rarity = 10},
         {items = {"technic:tin_dust"}, rarity = 10},
-        {items = {"technic:iron_dust"}, rarity = 10},
+        {items = {"technic:wrought_iron_dust"}, rarity = 10},
         {items = {"technic:coal_dust"}, rarity = 10},
         {items = {"technic:lead_dust"}, rarity = 10},
         {items = {"technic_many_machines:asteroid_stone"}},

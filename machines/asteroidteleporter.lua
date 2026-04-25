@@ -1,6 +1,6 @@
 local S = core.get_translator("technic_many_machines")
 --power usage
-local demand = 80
+local demand = 15000
 --possible nodes teleporter makes, with the number on the right being weight
 local asteroidoutputnodes = {
     ["technic_many_machines:asteroid_stone"] = 45
@@ -269,8 +269,7 @@ core.register_node("technic_many_machines:hv_asteroid_teleporter", {
             local time = meta:get_int("time") + 1
             meta:set_int("time", time)
             meta:set_string("infotext", "Asteroid Teleporter Active")
-            core.chat_send_all(time)
-            if time > 3 then
+            if time > 300 then
                 local originpos = {x = pos.x - 2, y = pos.y + 1, z = pos.z - 2}
                 local can_spawn = true
                 -- Step 1: Check area
@@ -289,7 +288,6 @@ core.register_node("technic_many_machines:hv_asteroid_teleporter", {
                 end
                 -- Step 2: Spawn random nodes
                 if can_spawn then
-                    core.chat_send_all("Spawning ASTEROID")
                     meta:set_int("time", 0)
                     for x = 0, 4 do
                         for y = 0, 4 do

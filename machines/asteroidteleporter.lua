@@ -86,14 +86,14 @@ core.register_on_mods_loaded(function()
         light_source = 1,
     })
     if core.get_modpath("ethereal") then
-        register_asteroid_ore("etheriium_ore", {
+        register_asteroid_ore("etherium_ore", {
             description = "Etherium Ore",
             overlay = "ethereal_etherium_ore.png",
             groups = {cracky = 1, stone = 1, level = 2},
             drop = "ethereal:etherium_crystal 3",
             light_source = 1,
         })
-        asteroidoutputnodes["technic_many_machines:asteroid_etheriium_ore"] = 3
+        asteroidoutputnodes["technic_many_machines:asteroid_etherium_ore"] = 3
         
     end
     asteroidoutputnodes["technic_many_machines:asteroid_mese_ore"] = 5

@@ -1,9 +1,9 @@
 local S = core.get_translator("technic_many_machines")
 --power usage
-local demand = 15000
+local demand = 50000
 --possible nodes teleporter makes, with the number on the right being weight
 local asteroidoutputnodes = {
-    ["technic_many_machines:asteroid_stone"] = 45
+    ["technic_many_machines:asteroid_stone"] = 30
 }
 --getting a rando node from list based on weight
 local totalweight = 0
@@ -26,63 +26,63 @@ core.register_on_mods_loaded(function()
         description = "Mese Ore",
         overlay = "default_mineral_mese.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "default:mese_crystal 2",
+        drop = "default:mese_crystal 3",
         light_source = 2,
     })
     register_asteroid_ore("diamond_ore", {
         description = "Diamond Ore",
         overlay = "default_mineral_diamond.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "default:diamond 2",
+        drop = "default:diamond 3",
         light_source = 1,
     })
     register_asteroid_ore("gold_ore", {
         description = "Gold Ore",
         overlay = "default_mineral_gold.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "default:gold_lump 3",
+        drop = "default:gold_lump 4",
         light_source = 1,
     })
     register_asteroid_ore("uranium_ore", {
         description = "Uranium Ore",
         overlay = "technic_mineral_uranium.png",
         groups = {cracky = 1, stone = 1, level = 2, radioactive = 2},
-        drop = "technic:uranium_lump 5",
+        drop = "technic:uranium_lump 6",
         light_source = 1,
     })
     register_asteroid_ore("zinc_ore", {
         description = "Zinc Ore",
         overlay = "technic_mineral_zinc.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "technic:zinc_lump 3",
+        drop = "technic:zinc_lump 4",
         light_source = 1,
     })
     register_asteroid_ore("chromium_ore", {
         description = "Chromium Ore",
         overlay = "technic_mineral_chromium.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "technic:chromium_lump 3",
+        drop = "technic:chromium_lump 4",
         light_source = 1,
     })
     register_asteroid_ore("silver_ore", {
         description = "Silver Ore",
         overlay = "moreores_mineral_silver.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "moreores:silver_lump 3",
+        drop = "moreores:silver_lump 4",
         light_source = 1,
     })
     register_asteroid_ore("mithril_ore", {
         description = "Mithril Ore",
         overlay = "moreores_mineral_mithril.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "moreores:mithril_lump 1",
+        drop = "moreores:mithril_lump 2",
         light_source = 1,
     })
     register_asteroid_ore("sulfur_ore", {
         description = "Sulfur Ore",
         overlay = "technic_mineral_sulfur.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "technic:sulfur_lump 3",
+        drop = "technic:sulfur_lump 4",
         light_source = 1,
     })
     if core.get_modpath("ethereal") then
@@ -90,7 +90,7 @@ core.register_on_mods_loaded(function()
             description = "Etherium Ore",
             overlay = "ethereal_etherium_ore.png",
             groups = {cracky = 1, stone = 1, level = 2},
-            drop = "ethereal:etherium_crystal 3",
+            drop = "ethereal:etherium_crystal 4",
             light_source = 1,
         })
         asteroidoutputnodes["technic_many_machines:asteroid_etherium_ore"] = 3
@@ -269,7 +269,7 @@ core.register_node("technic_many_machines:hv_asteroid_teleporter", {
             local time = meta:get_int("time") + 1
             meta:set_int("time", time)
             meta:set_string("infotext", "Asteroid Teleporter Active")
-            if time > 300 then
+            if time > 124 then
                 local originpos = {x = pos.x - 2, y = pos.y + 1, z = pos.z - 2}
                 local can_spawn = true
                 -- Step 1: Check area

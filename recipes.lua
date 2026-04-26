@@ -108,6 +108,15 @@ core.register_craft({
         {"technic:control_logic_unit", "technic:hv_transformer", "technic:hv_cable"},
     }
 })
+--radiation_chamber.lua
+core.register_craft({
+    output = "technic_many_machines:hv_radiation_chamber",
+    recipe = {
+        {"technic:composite_plate", "technic:hv_transformer", "technic:composite_plate"},
+        {"technic_many_machines:radiant_alloy_plate", "technic:machine_casing", "technic_many_machines:radiant_alloy_plate"},
+        {"technic:uranium35_block", "technic:hv_cable", "technic:uranium35_block"},
+    }
+})
 --machine parts
 core.register_craft({
     output = "technic_many_machines:compressor_piston",

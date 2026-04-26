@@ -66,6 +66,20 @@ register_node("radiant_alloy_block", {
     groups = {cracky = 1, level = 2},
     light_source = 7,
 })
+--thorium, made in the radiation chamber by leaving uranium dust in it. The higher the fissile of uranium, the faster it is.
+register_craftitem("thorium_ingot", {
+    description = S("Thorium Ingot"),
+    inventory_image = base_ingot.."^[colorize:#273126:150",
+})
+register_craftitem("thorium_dust", {
+    description = S("Thorium Dust"),
+    inventory_image = base_dust.."^[colorize:#273126:150",
+})
+register_node("thorium_block", {
+    description = S("Thorium Block"),
+    tiles = {base_metal_block.."^[colorize:#273126:150"},
+    groups = {cracky = 1, level = 2, radioactive = 2},
+})
 --asteroid nodes
 --it can drop copper, tin, iron, coal, and lead in dust form
 local drops = {
@@ -123,4 +137,10 @@ register_multiblock_part("hv_mb_casing", {
     description = "HV Machine Casing Part",
     tiles = {"technic_many_machines_damaged_hv_frame.png"},
     groups = {cracky = 1, level = 2},
+})
+--misc other stuff
+register_craftitem("radioactive_sludge", {
+    description = S("Radioactive Sludge"),
+    inventory_image = "technic_many_machines_radioactive_sludge.png",
+    light_source = 7,
 })

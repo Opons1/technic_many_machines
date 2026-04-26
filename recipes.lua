@@ -152,3 +152,27 @@ technic.register_compressor_recipe({
     input = {raling .. " 5"},
     output = {ralplate}
 })
+local thorblock = "technic_many_machines:thorium_block"
+local thoring = "technic_many_machines:thorium_ingot"
+local thordust = "technic_many_machines:thorium_dust"
+core.register_craft({
+    output = thorblock,
+    type = "shapeless",
+    recipe = {thoring, thoring, thoring, thoring, thoring, thoring, thoring, thoring, thoring}
+})
+core.register_craft({
+    output = thoring,
+    type = "shapeless",
+    recipe = {thorblock}
+})
+core.register_craft({
+    type = "cooking", 
+    output = thoring,
+    recipe = thordust,
+    time = 3,
+})
+technic.register_grinder_recipe({
+    time = 2,
+    input = {thoring},
+    output = {thordust}
+})

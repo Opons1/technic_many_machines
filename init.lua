@@ -26,3 +26,4 @@ dofile(core.get_modpath("technic_many_machines").."/machines/cryptominer.lua")
 end
 dofile(core.get_modpath("technic_many_machines").."/machines/drop_extractor.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/asteroidteleporter.lua")
+dofile(core.get_modpath("technic_many_machines").."/machines/radiation_chamber.lua")

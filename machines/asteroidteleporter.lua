@@ -269,7 +269,7 @@ core.register_node("technic_many_machines:hv_asteroid_teleporter", {
             local time = meta:get_int("time") + 1
             meta:set_int("time", time)
             meta:set_string("infotext", "Asteroid Teleporter Active")
-            if time > 124 then
+            if time > 149 then
                 local originpos = {x = pos.x - 2, y = pos.y + 1, z = pos.z - 2}
                 local can_spawn = true
                 -- Step 1: Check area

@@ -103,7 +103,7 @@ core.register_craft({
 core.register_craft({
     output = "technic_many_machines:hv_asteroid_teleporter",
     recipe = {
-        {"default:mese_block", "technic_many_machines:radiant_alloy_plate", "default:mese_block"},
+        {"technic_many_machines:thorium_block", "technic_many_machines:radiant_alloy_plate", "default:mese"},
         {"technic:composite_plate", "technic_many_machines:hv_mb_casing", "technic:composite_plate"},
         {"technic:control_logic_unit", "technic:hv_transformer", "technic:hv_cable"},
     }

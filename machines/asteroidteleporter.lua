@@ -1,6 +1,7 @@
 local S = core.get_translator("technic_many_machines")
---power usage
 local demand = 50000
+local timeperasteroid = 300
+
 --possible nodes teleporter makes, with the number on the right being weight
 local asteroidoutputnodes = {
     ["technic_many_machines:asteroid_stone"] = 30
@@ -40,14 +41,14 @@ core.register_on_mods_loaded(function()
         description = "Gold Ore",
         overlay = "default_mineral_gold.png",
         groups = {cracky = 1, stone = 1, level = 2},
-        drop = "default:gold_lump 4",
+        drop = "default:gold_lump 3",
         light_source = 1,
     })
     register_asteroid_ore("uranium_ore", {
         description = "Uranium Ore",
         overlay = "technic_mineral_uranium.png",
         groups = {cracky = 1, stone = 1, level = 2, radioactive = 2},
-        drop = "technic:uranium_lump 6",
+        drop = "technic:uranium_lump 3",
         light_source = 1,
     })
     register_asteroid_ore("zinc_ore", {
@@ -93,18 +94,18 @@ core.register_on_mods_loaded(function()
             drop = "ethereal:etherium_dust 4",
             light_source = 1,
         })
-        asteroidoutputnodes["technic_many_machines:asteroid_etherium_ore"] = 3
+        asteroidoutputnodes["technic_many_machines:asteroid_etherium_ore"] = 2
         
     end
-    asteroidoutputnodes["technic_many_machines:asteroid_mese_ore"] = 5
-    asteroidoutputnodes["technic_many_machines:asteroid_diamond_ore"] = 3
-    asteroidoutputnodes["technic_many_machines:asteroid_gold_ore"] = 5
-    asteroidoutputnodes["technic_many_machines:asteroid_uranium_ore"] = 4
-    asteroidoutputnodes["technic_many_machines:asteroid_zinc_ore"] = 7
-    asteroidoutputnodes["technic_many_machines:asteroid_chromium_ore"] = 7
-    asteroidoutputnodes["technic_many_machines:asteroid_silver_ore"] = 7
+    asteroidoutputnodes["technic_many_machines:asteroid_mese_ore"] = 4
+    asteroidoutputnodes["technic_many_machines:asteroid_diamond_ore"] = 2
+    asteroidoutputnodes["technic_many_machines:asteroid_gold_ore"] = 3
+    asteroidoutputnodes["technic_many_machines:asteroid_uranium_ore"] = 3
+    asteroidoutputnodes["technic_many_machines:asteroid_zinc_ore"] = 4
+    asteroidoutputnodes["technic_many_machines:asteroid_chromium_ore"] = 4
+    asteroidoutputnodes["technic_many_machines:asteroid_silver_ore"] = 4
     asteroidoutputnodes["technic_many_machines:asteroid_mithril_ore"] = 3
-    asteroidoutputnodes["technic_many_machines:asteroid_sulfur_ore"] = 13
+    asteroidoutputnodes["technic_many_machines:asteroid_sulfur_ore"] = 5
 
 
 
@@ -268,23 +269,14 @@ core.register_node("technic_many_machines:hv_asteroid_teleporter", {
         if input >= demand then
             local time = meta:get_int("time") + 1
             meta:set_int("time", time)
-            meta:set_string("infotext", "Asteroid Teleporter Active")
-            if time > 199 then
+            meta:set_string("infotext", "Asteroid Teleporter Active\nTime Until Asteroid: "..(timeperasteroid - time).." seconds")
+            if time >= timeperasteroid then
                 local originpos = {x = pos.x - 2, y = pos.y + 1, z = pos.z - 2}
                 local can_spawn = true
                 -- Step 1: Check area
-                for x = 0, 4 do
-                    for y = 0, 4 do
-                        for z = 0, 4 do
-                            local p = {x=originpos.x+x, y=originpos.y+y, z=originpos.z+z}
-                            if core.get_node(p).name ~= "air" then
-                                can_spawn = false
-                                break
-                            end
-                        end
-                        if not can_spawn then
-                            break end
-                    end
+                local nodes = core.find_nodes_in_area(originpos, {x = originpos.x + 4, y = originpos.y + 4, z = originpos.z + 4}, {"air"})
+                if #nodes < 125 then
+                    can_spawn = false
                 end
                 -- Step 2: Spawn random nodes
                 if can_spawn then
@@ -298,8 +290,8 @@ core.register_node("technic_many_machines:hv_asteroid_teleporter", {
                         end
                     end
                 else
-                    -- reset time
-                    meta:set_int("time", 0)
+                    -- reset time a little bit so it doesnt spam too much
+                    meta:set_int("time", time - 10)
                     meta:set_string("infotext", "Teleport Blocked: Obstruction Detected")
                 end
             end

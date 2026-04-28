@@ -37,7 +37,7 @@ core.override_item("technic_many_machines:hv_sawmill", {
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_sawmill_front.png",
 }})
---I got stuck here and asked ai for help, and all it changed was the core.register_on_mods_loaded with this table.insert? what is this
+--the table.insert puts this in front of technic core.register_on_mods loaded, since it needs to be like that to register the technic recipe
 table.insert(core.registered_on_mods_loaded, 1, function()
     local nodes = core.registered_nodes
     for nodename, def in pairs(nodes) do

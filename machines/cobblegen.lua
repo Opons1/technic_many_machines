@@ -120,3 +120,17 @@ core.override_item("technic_many_machines:hv_cobble_generator_active", {
         },
     }
 })
+if core.get_modpath("techage") then
+    techage.register_node({"technic_many_machines:hv_cobble_generator", "technic_many_machines:hv_cobble_generator_active", "technic_many_machines:mv_cobble_generator", "technic_many_machines:mv_cobble_generator_active"}, {
+        on_pull_item = function(pos, out_dir, count)
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.get_items(pos, inv, "dst", count)
+        end,
+        on_unpull_item = function(pos, out_dir, stack)
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.put_items(inv, "dst", stack)
+        end,
+    })
+end

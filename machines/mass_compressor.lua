@@ -57,4 +57,22 @@ for _, recipe in ipairs(recipes) do
         input = {recipe[2], recipe[3]},
         output = recipe[4]})
 end
-
+if core.get_modpath("techage") then
+    techage.register_node({"technic_many_machines:hv_masscompressor", "technic_many_machines:hv_masscompressor_active"}, {
+        on_push_item = function(pos, in_dir, stack)
+            local meta = core.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.put_items(inv, "src", stack)
+        end,
+        on_pull_item = function(pos, out_dir, count)
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.get_items(pos, inv, "dst", count)
+        end,
+        on_unpull_item = function(pos, out_dir, stack)
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.put_items(inv, "dst", stack)
+        end,
+    })
+end

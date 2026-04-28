@@ -59,3 +59,22 @@ table.insert(core.registered_on_mods_loaded, 1, function()
         end
     end
 end)
+if core.get_modpath("techage") then
+    techage.register_node({"technic_many_machines:hv_sawmill", "technic_many_machines:hv_sawmill_active"}, {
+        on_push_item = function(pos, in_dir, stack)
+            local meta = core.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.put_items(inv, "src", stack)
+        end,
+        on_pull_item = function(pos, out_dir, count)
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.get_items(pos, inv, "dst", count)
+        end,
+        on_unpull_item = function(pos, out_dir, stack)
+            local meta = minetest.get_meta(pos)
+            local inv = meta:get_inventory()
+            return techage.put_items(inv, "dst", stack)
+        end,
+    })
+end

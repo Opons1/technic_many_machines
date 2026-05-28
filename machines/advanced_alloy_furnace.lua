@@ -5,7 +5,7 @@ technic.register_recipe_type("advanced_alloying", {
     input_size = 3
 })
 technic.register_base_machine("technic_many_machines:hv_advancedalloyfurnace", {
-    description = S("HV Advanced Alloy Furnace").."\n"..core.colorize("#84bac1ff", S("Used for different alloying processes") .. "\n" .. S("(not useful yet)")),
+    description = S("HV Advanced Alloy Furnace").."\n"..core.colorize("#84bac1ff", S("Used for different alloying processes")),
     typename = "advanced_alloying",
     tier = "HV",
     demand = {8000, 6500, 5000},

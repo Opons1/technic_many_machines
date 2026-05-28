@@ -154,7 +154,7 @@ core.register_craft({
 technic.register_grinder_recipe({
     time = 4,
     input = {raling},
-    output = {raldust.." 2"}
+    output = {raldust}
 })
 technic.register_compressor_recipe({
     time = 8,

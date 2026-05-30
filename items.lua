@@ -6,8 +6,8 @@ local register_node = function(name, def)
     core.register_node("technic_many_machines:"..name, def)
 end
 --some modified textures that are useful
-local base_ingot = "default_steel_ingot.png^[colorize:#ffffff:100^[hsl:0:100:0"
-local base_dust = "technic_silver_dust.png^[hsl:0:100:0"
+local base_ingot = "default_steel_ingot.png^[colorize:#ffffff:100"
+local base_dust = "technic_silver_dust.png"
 local base_plate = "technic_many_machines_base_plate.png"
 local base_metal_block = "technic_many_machines_base_metal_block.png"
 

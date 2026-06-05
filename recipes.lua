@@ -117,6 +117,15 @@ core.register_craft({
         {"technic:uranium35_block", "technic:hv_cable", "technic:uranium35_block"},
     }
 })
+--sawmill.lua
+core.register_craft({
+    output = "technic_many_machines:hv_sawmill",
+    recipe = {
+        {"technic:composite_plate", "technic:hv_transformer", "technic:composite_plate"},
+        {"technic:diamond_drill_head", "technic:machine_casing", "technic:diamond_drill_head"},
+        {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
+    }
+})
 --machine parts
 core.register_craft({
     output = "technic_many_machines:compressor_piston",

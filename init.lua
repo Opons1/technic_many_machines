@@ -13,6 +13,9 @@ local enable_cryptominer = core.settings:get_bool("technic_many_machines_enable_
 technic_many_machines.cryptominer_output = core.settings:get("technic_many_machines_cryptominer_output") or ""
 --items
 dofile(core.get_modpath("technic_many_machines").."/items.lua")
+--tools
+--dofile(core.get_modpath("technic_many_machines").."/tools.lua")
+
 dofile(core.get_modpath("technic_many_machines").."/machines/mass_compressor.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/advanced_alloy_furnace.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/bulk_alloy_furnace.lua")

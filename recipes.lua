@@ -145,13 +145,13 @@ local raldust = "technic_many_machines:radiant_alloy_dust"
 local ralplate = "technic_many_machines:radiant_alloy_plate"
 
 core.register_craft({
-    output = ralblock,
     type = "shapeless",
+    output = ralblock,
     recipe = {raling, raling, raling, raling, raling, raling, raling, raling, raling}
 })
 core.register_craft({
-    output = raling,
     type = "shapeless",
+    output = raling .. " 9",
     recipe = {ralblock}
 })
 core.register_craft({
@@ -179,7 +179,7 @@ core.register_craft({
     recipe = {thoring, thoring, thoring, thoring, thoring, thoring, thoring, thoring, thoring}
 })
 core.register_craft({
-    output = thoring,
+    output = thoring .. " 9",
     type = "shapeless",
     recipe = {thorblock}
 })

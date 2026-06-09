@@ -121,16 +121,18 @@ end
 register_multiblock_part("hv_mb_airlock", {
     description = "HV Airlock Part",
     paramtype = "light",
+    use_texture_alpha = true,
     walkable = false,
-    drawtype = "glasslike",
-    tiles = {"technic_many_machines_multiblock_hv_airlock.png^[opacity:200"},
+    drawtype = "glasslike_framed",
+    tiles = {"technic_many_machines_multiblock_hv_airlock.png", "technic_many_machines_damaged_hv_frame.png^[colorize:#585858:200^[opacity:117"},
     groups = {cracky = 1, level = 2},
 })
 register_multiblock_part("hv_mb_glass", {
     description = "HV Glass Part",
+    use_texture_alpha = true,
     paramtype = "light",
-    drawtype = "glasslike",
-    tiles = {"technic_many_machines_multiblock_hv_glass.png^[opacity:200"},
+    drawtype = "glasslike_framed",
+    tiles = {"technic_many_machines_multiblock_hv_glass.png", "technic_many_machines_damaged_hv_frame.png^[opacity:117"},
     groups = {cracky = 1, level = 2},
 })
 register_multiblock_part("hv_mb_casing", {

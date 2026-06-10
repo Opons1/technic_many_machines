@@ -16,7 +16,7 @@ else
 end
 local S = core.get_translator("technic_many_machines")
 core.register_node("technic_many_machines:lv_moving_walkway", {
-    description = S("Moving Walkway"),
+    description = S("LV Moving Walkway"),
     tiles = {
         {
             name = "movingwalkwaytop.png",

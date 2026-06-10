@@ -124,11 +124,12 @@ register_multiblock_part("hv_mb_airlock", {
     use_texture_alpha = true,
     walkable = false,
     drawtype = "glasslike_framed",
-    tiles = {"technic_many_machines_multiblock_hv_airlock.png", "technic_many_machines_damaged_hv_frame.png^[colorize:#585858:255^[opacity:117"},
+    tiles = {"technic_many_machines_multiblock_hv_airlock.png", "technic_many_machines_damaged_hv_frame.png^[colorize:#7b7b7b:255^[opacity:117"},
     groups = {cracky = 1, level = 2},
-    post_effect_color = {r = 88, b = 88, g = 88, a = 117}
+    post_effect_color = {r = 123, b = 123, g = 123, a = 117}
 
 })
+
 register_multiblock_part("hv_mb_glass", {
     description = "HV Glass Part",
     use_texture_alpha = true,

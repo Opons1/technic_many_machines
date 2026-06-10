@@ -16,7 +16,7 @@ else
 end
 local S = core.get_translator("technic_many_machines")
 core.register_node("technic_many_machines:lv_moving_walkway", {
-    description = S("Moving Walkway"),
+    description = S("LV Moving Walkway"),
     tiles = {
         {
             name = "movingwalkwaytop.png",
@@ -78,9 +78,9 @@ core.register_node("technic_many_machines:lv_moving_walkway", {
         local meta = core.get_meta(pos)
         local input = meta:get_int("LV_EU_input")
         if input >= 80 then
-            meta:set_string("infotext", S("Moving Walkway Active"))
+            meta:set_string("infotext", S("LV Moving Walkway Active"))
         else
-            meta:set_string("infotext", S("Moving Walkway Unpowered"))
+            meta:set_string("infotext", S("LV Moving Walkway Unpowered"))
         end
     end,
 })

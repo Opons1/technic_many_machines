@@ -42,9 +42,9 @@ HV Mass Compressor =
 Compresses items in bulk with new recipes =
 
 #movingwalkway.lua
-Moving Walkway =
-Moving Walkway Active =
-Moving Walkway Unpowered =
+LV Moving Walkway =
+LV Moving Walkway Active =
+LV Moving Walkway Unpowered =
 
 #sawmill.lua
 Sawmilling =

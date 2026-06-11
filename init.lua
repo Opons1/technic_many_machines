@@ -34,11 +34,59 @@ dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
 
 --tutorials
 local guides = {
+	{
+		id = "moving_floor",
+        title = "LV Moving Floor",
+        image = "technic_many_machines_moving_floor.png",
+        desc = "When given 80 EU, it moves the player on top of it forwards."
+	},
+	{
+		id = "cobblestone_generators",
+		title = "Cobblestone Generators",
+		image = "technic_many_machines_lv_cobblestone_generator.png",
+		desc = "Generates cobblestone. The LV generates 1 per second, and each tier higher generates 3 times more than the previous."
+	},
+	{
+		id = "drop_extractors",
+		title = "Drop Extractors",
+		image = "technic_many_machines_lv_side.png^tms_gear.png",
+		desc = "Simulates the breaking of a block to obtain chance drops. Gravel turns into flint and leaves into saplings. Can only handle up to 4 possible outputs."
+	},
+    {
+        id = "hv_sawmill",
+        title = "HV Sawmill",
+        image = "technic_many_machines_hv_sawmill_front.png",
+        desc = "Saws trees into 8 wood each."
+    },
+    {
+        id = "hv_bulk_alloy_furnace",
+        title = "HV Bulk Alloy Furnace",
+        image = "technic_many_machines_hv_alloy_furnace_front.png",
+        desc = "A alloy furnace 6 times faster than its MV counterpart"
+    },
     { 
         id = "hv_advanced_alloy_furnace", 
         title = "HV Advanced Alloy Furnace", 
         image = "technic_many_machines_hv_advancedalloyfurnace_front.png", 
         desc = "An Alloy Furnace you will need to use in the future. Made to do 3 input alloying recipes, the most prevalent of which being the recipe to make radiant alloy." 
+    },
+    {
+        id = "hv_mass_compressor",
+        title = "HV Bulk Compressor",
+        image = "technic_many_machines_hv_masscompressor_front.png",
+        desc = "Can compress multiple items together, and also compresses at great speeds."
+    },
+    {
+        id = "hv_radiation_chamber",
+        title = "HV Radiation Chamber",
+        image = "technic_many_machines_hv_radiation_chamber.png",
+        desc = "Turns 10 uranium dust into thorium. The higher the fissile, the faster it goes."
+    },
+    {
+        id = "hv_asteroid_teleporter",
+        title = "HV Asteroid Teleporter",
+        image = "technic_many_machines_asteroid_teleporter.png",
+        desc = "This machine teleports asteroids from far beyond our reach, for us to harvest for minerals(best used with HV Quarry). To construct, you must build a hollow 7x7x7 cube, with the center of the bottom. The shell described here must be made of HV Machine Casing Parts, HV Glass Parts, or HV Airlock Parts. Once the structure is complete, connect the asteroid teleporter to a network then right-click to complete the structure. Requires 50 KEU of power to run."
     },
 }
 
@@ -89,8 +137,8 @@ core.register_on_player_receive_fields(function(player, formname, fields)
     end
 end)
 
-core.register_chatcommand("technic_guide", {
-    description = "Opens the Extra Technic Machines tutorial page",
+core.register_chatcommand("etmguide", {
+    description = "Opens the documentation for the machines added by this mod.",
     privs = {interact = true},
     func = function(name, param)
         core.show_formspec(name, "technic_many_machines:tutorial", get_main_formspec())

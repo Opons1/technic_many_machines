@@ -56,13 +56,13 @@ local guides = {
         id = "hv_sawmill",
         title = "HV Sawmill",
         image = "technic_many_machines_hv_sawmill_front.png",
-        desc = "Saws trees into 8 wood each."
+        desc = "Doubles the yield of wood from trees."
     },
     {
         id = "hv_bulk_alloy_furnace",
         title = "HV Bulk Alloy Furnace",
         image = "technic_many_machines_hv_alloy_furnace_front.png",
-        desc = "A alloy furnace 6 times faster than its MV counterpart"
+        desc = "A alloy furnace 6 times faster than its MV counterpart."
     },
     { 
         id = "hv_advanced_alloy_furnace", 

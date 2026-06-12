@@ -135,11 +135,13 @@ core.register_craft({
         {"technic:carbon_plate", "technic:carbon_plate", "technic:carbon_plate"},
 }})
 --raw materials
-technic.register_grinder_recipe({
-    time = 8,
-    output = {"technic:copper_dust"},
-    input = {"technic_many_machines:crushed_malachite"} 
-})
+if core.get_modpath("underch") then
+    technic.register_grinder_recipe({
+        time = 8,
+        output = {"technic:copper_dust"},
+        input = {"technic_many_machines:crushed_malachite"} 
+    })
+end
 --simple materials
 
 --blocks

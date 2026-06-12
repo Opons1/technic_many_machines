@@ -38,13 +38,13 @@ local guides = {
 		id = "moving_floor",
         title = "LV Moving Floor",
         image = "technic_many_machines_moving_floor.png",
-        desc = "When given 80 EU, it moves the player on top of it forwards."
+        desc = "When given 80 EU, it moves the player on top of it in the direction it is facing."
 	},
 	{
 		id = "cobblestone_generators",
 		title = "Cobblestone Generators",
 		image = "technic_many_machines_lv_cobblestone_generator.png",
-		desc = "Generates cobblestone. The LV generates 1 per second, and each tier higher generates 3 times more than the previous."
+		desc = "Generates cobblestone. The LV generates 1 cobblestone per second, and each tier higher generates 3 times more."
 	},
 	{
 		id = "drop_extractors",
@@ -62,19 +62,19 @@ local guides = {
         id = "hv_bulk_alloy_furnace",
         title = "HV Bulk Alloy Furnace",
         image = "technic_many_machines_hv_alloy_furnace_front.png",
-        desc = "A alloy furnace 6 times faster than its MV counterpart."
+        desc = "An alloy furnace 6 times faster than its MV counterpart."
     },
     { 
         id = "hv_advanced_alloy_furnace", 
         title = "HV Advanced Alloy Furnace", 
         image = "technic_many_machines_hv_advancedalloyfurnace_front.png", 
-        desc = "An Alloy Furnace you will need to use in the future. Made to do 3 input alloying recipes, the most prevalent of which being the recipe to make radiant alloy." 
+        desc = "An alloy furnace you will need to use for many machines. Made to do alloying recipes with 3 inputs." 
     },
     {
         id = "hv_mass_compressor",
         title = "HV Bulk Compressor",
         image = "technic_many_machines_hv_masscompressor_front.png",
-        desc = "Can compress multiple items together, and also compresses at great speeds."
+        desc = "Can compress 2 different items together, and can do some normal compressor recipes at great speeds."
     },
     {
         id = "hv_radiation_chamber",

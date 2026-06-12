@@ -53,11 +53,19 @@ end
 local recipes = {
     {4, "default:pick_wood", "default:stick 7"},
 }
+
 if core.get_modpath("underch") then
     table.insert(recipes, {
     30, "underch:malachite", "technic_many_machines:crushed_malachite 3"
     })
 end
+
+if core.get_modpath("too_many_stones") then
+    table.insert(recipes, {
+    30, "too_many_stones:galena", "technic_many_machines:crushed_galena 2"
+    })
+end
+
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_crusher_recipe({
         time = recipe[1],

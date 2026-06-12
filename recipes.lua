@@ -142,6 +142,13 @@ if core.get_modpath("underch") then
         input = {"technic_many_machines:crushed_malachite"} 
     })
 end
+if core.get_modpath("too_many_stones") then
+    technic.register_grinder_recipe({
+        time = 8,
+        output = {"technic:lead_dust"},
+        input = {"technic_many_machines:crushed_galena"} 
+    })
+end
 --simple materials
 
 --blocks

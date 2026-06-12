@@ -159,3 +159,9 @@ if core.get_modpath("underch") then
         inventory_image = "technic_many_machines_crushed_malachite.png"
     })
 end
+if core.get_modpath("too_many_stones") then
+    register_craftitem("crushed_galena", {
+        description = S("Crushed Galena"),
+        inventory_image = "technic_many_machines_crushed_galena.png"
+    })
+end

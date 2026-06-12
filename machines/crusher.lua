@@ -1,7 +1,7 @@
 local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("crushing", {
     description = S("Crushing"),
-    inventory_image = "technic_many_machines_mv_crusher_front",
+    inventory_image = "technic_many_machines_mv_crusher_front.png",
     input_size = 1,
     output_size = 4,
 })
@@ -51,8 +51,13 @@ function technic_many_machines.register_crusher_recipe(data)
 end
 
 local recipes = {
-    {4, "default:pick_wood", "default:stick 7"}
+    {4, "default:pick_wood", "default:stick 7"},
 }
+if core.get_modpath("underch") then
+    table.insert(recipes, {
+    30, "underch:malachite", "technic_many_machines:crushed_malachite 3"
+    })
+end
 for _, recipe in ipairs(recipes) do
     technic_many_machines.register_crusher_recipe({
         time = recipe[1],

@@ -152,3 +152,10 @@ register_craftitem("radioactive_sludge", {
     inventory_image = "technic_many_machines_radioactive_sludge.png",
     light_source = 7,
 })
+
+if core.get_modpath("underch") then
+    register_craftitem("crushed_malachite", {
+        description = S("Crushed Malachite"),
+        inventory_image = "technic_many_machines_crushed_malachite.png"
+    })
+end

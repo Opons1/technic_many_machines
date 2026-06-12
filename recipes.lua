@@ -134,8 +134,12 @@ core.register_craft({
         {"technic:cast_iron_ingot", "basic_materials:carbon_steel_bar", "technic:cast_iron_ingot"},
         {"technic:carbon_plate", "technic:carbon_plate", "technic:carbon_plate"},
 }})
-
-
+--raw materials
+technic.register_grinder_recipe({
+    time = 8,
+    output = {"technic:copper_dust"},
+    input = {"technic_many_machines:crushed_malachite"} 
+})
 --simple materials
 
 --blocks

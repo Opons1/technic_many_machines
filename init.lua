@@ -22,7 +22,6 @@ dofile(core.get_modpath("technic_many_machines").."/machines/bulk_alloy_furnace.
 dofile(core.get_modpath("technic_many_machines").."/machines/cobblegen.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/movingwalkway.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/sawmill.lua")
-dofile(core.get_modpath("technic_many_machines").."/recipes.lua")
 --fun unoptmized fun
 if enable_cryptominer then
 dofile(core.get_modpath("technic_many_machines").."/machines/cryptominer.lua")
@@ -31,6 +30,7 @@ dofile(core.get_modpath("technic_many_machines").."/machines/drop_extractor.lua"
 dofile(core.get_modpath("technic_many_machines").."/machines/asteroidteleporter.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/radiation_chamber.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
+dofile(core.get_modpath("technic_many_machines").."/recipes.lua")
 
 --tutorials
 local guides = {

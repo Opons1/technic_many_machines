@@ -207,3 +207,16 @@ technic.register_grinder_recipe({
     input = {thoring},
     output = {thordust}
 })
+--others
+if core.get_modpath("darkage") then
+    technic.register_compressor_recipe({
+        time = 2,
+        input = {"darkage:chalk_powder 4"},
+        output = {"darkage:chalk"}
+    })
+    technic_many_machines.register_bulk_compressor_recipe({
+        time = 2,
+        input = {"darkage:chalk_powder 40", "darkage:chalk_powder 40"},
+        output = {"darkage:chalk 20"}
+    })
+end

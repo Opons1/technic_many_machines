@@ -4,7 +4,7 @@ local timeperasteroid = 300
 
 --possible nodes teleporter makes, with the number on the right being weight
 local asteroidoutputnodes = {
-    ["technic_many_machines:asteroid_stone"] = 30
+    ["technic_many_machines:asteroid_stone"] = 60
 }
 --getting a rando node from list based on weight
 local totalweight = 0

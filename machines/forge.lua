@@ -10,7 +10,7 @@ local recipes = {}
 local function get_key(input)
     local key
     if type(input) == "string" then
-        return Itemstack(input):get_name()
+        return ItemStack(input):get_name()
     elseif type(input) == "table" then
         local inputs = {}
         for _, item in ipairs(input) do
@@ -606,7 +606,7 @@ local function check_and_clear_meta(pos, contposasstring)
         if meta:get_string("multiblockcontrollerpos") == contposasstring then
             meta:set_string("infotext", "")
             meta:set_string("multiblockcontrollerpos", "")
-            if nodename == "technic_manu_machines:hv_forge_power" then
+            if nodename == "technic_many_machines:hv_forge_power" then
                 meta:set_int("HV_EU_demand", 0)
             end
         end
@@ -822,5 +822,38 @@ core.register_node("technic_many_machines:hv_forge_controller", {
             local inv = meta:get_inventory()
 			return inv:room_for_item("src", stack)	
 		end,
-    }
+    },
+    on_rotate = false,
 })
+--rotating is bad
+local sonicscrewdriver = core.registered_tools["technic:sonic_screwdriver"]
+if sonicscrewdriver then
+    local on_use = sonicscrewdriver.on_use
+    local on_place = sonicscrewdriver.on_place
+
+    core.override_item("technic:sonic_screwdriver", {
+        on_use = function(itemstack, user, pointed_thing)
+            if pointed_thing.type ~= "node" then
+		        return itemstack
+	        end
+            local pos = pointed_thing.under
+            local node = core.get_node(pos)
+            if node.name == "technic_many_machines:hv_forge_controller" then
+                return itemstack 
+            end
+            return on_use(itemstack, user, pointed_thing)
+        end,
+        on_place = function(itemstack, user, pointed_thing)
+        	if pointed_thing.type ~= "node" then
+		        return itemstack
+	        end
+            local pos = pointed_thing.under
+            local node = core.get_node(pos)
+            
+            if node.name == "technic_many_machines:hv_forge_controller" then
+                return itemstack 
+            end
+            return on_place(itemstack, user, pointed_thing)
+        end,
+    })
+end

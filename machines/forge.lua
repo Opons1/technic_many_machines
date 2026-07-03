@@ -1,5 +1,6 @@
 local register_multiblock_part = technic_many_machines.register_multiblock_part
 local has_unified_inventory = core.get_modpath("unified_inventory")
+--this is so bad
 --the multiblock parts
 --recipes for the forge
 technic_many_machines.forge_recipes = {}
@@ -124,8 +125,6 @@ register_multiblock_part("hv_forge_power", {
         local cpos = core.string_to_pos(meta:get_string("multiblockcontrollerpos"))
 
         if not cpos then 
-            core.chat_send_all(meta:get_string("multiblockcontrollerpos"))
-            core.chat_send_all("contpos not found")
             return 
         end
         local cmeta = core.get_meta(cpos)
@@ -178,8 +177,8 @@ end
 local formspec = "formspec_version[6]"
     .. "size[10.25,7.75]"
     .. "no_prepend[]"
-    .. "bgcolor[#000000]"
-    .. "listcolors[#00bcd4;#008d9f]"
+    .. "background[0,0;10.25,7.75;technic_many_machines_forge_formspec_bg.png]"
+    .. "listcolors[#021d20;#005864]"
     .. "list[current_player;main;0.25,2.75;8,4;0]"
     .. "list[context;src;0.25,0.25;4,2;0]"
     .. "list[context;dst;7.125,0.875;1,1;0]"
@@ -603,7 +602,6 @@ local validnodes = {
 local function check_and_clear_meta(pos, contposasstring)
     local nodename = core.get_node(pos).name
     if validnodes[nodename] then
-        core.chat_send_all(nodename)
         local meta = core.get_meta(pos)
         if meta:get_string("multiblockcontrollerpos") == contposasstring then
             meta:set_string("infotext", "")
@@ -667,7 +665,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
     },
     groups = {cracky = 1, level = 2},
     paramtype2 = "facedir",
-    allow_metadata_inventory_put = function(pos, from_list, from_index, to_list, to_index, count, player)
+    allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
         local playername = player:get_player_name()
         if core.is_protected(pos, playername) or to_list == "dst" then
             return 0
@@ -702,7 +700,6 @@ core.register_node("technic_many_machines:hv_forge_controller", {
             core.chat_send_player(name, "Please replace the controller and try to avoid using screwdriver.")
             return
         end
-        core.chat_send_player(name, "Direction: " .. dir)
         if check_structure(pos, dir, name) then
             local meta = core.get_meta(pos)
             meta:set_int("multiblockactive", 1)
@@ -808,9 +805,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
         local node = core.get_node(pos)
         local dir = node.param2
         local strpos = core.pos_to_string(pos)
-        core.chat_send_all(dir)
         if dir < 4 then
-            core.chat_send_all("clearing")
             dirsforclear[dir](pos, strpos)
         end
     end

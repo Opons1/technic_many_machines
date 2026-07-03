@@ -1,5 +1,4 @@
 local cable_entry = "^technic_cable_connection_overlay.png"
-
 --i am doing everything i can to optomize since i am gonna SPAM this node in my server
 --i tried to replicate technics hydro
 local function get_flow(pos)
@@ -31,7 +30,6 @@ local function get_flow(pos)
     --took me so long to figure out this is why it was failing... why do i need to do this
     pos.z = pos.z + 1
     return flow
-
 end
 
 function technic_many_machines.register_hydro_generator(name, data)

@@ -91,6 +91,12 @@ local guides = {
         image = "technic_many_machines_asteroid_teleporter.png",
         desc = "This machine teleports asteroids from far beyond our reach, for us to harvest for minerals(best used with HV Quarry). To construct, you must build a hollow 7x7x7 cube, with the center of the bottom. The shell described here must be made of HV Machine Casing Parts, HV Glass Parts, or HV Airlock Parts. Once the structure is complete, connect the asteroid teleporter to a network then right-click to complete the structure. Requires 50 KEU of power to run."
     },
+    {
+        id = "hv_forge",
+        title = "The Forge",
+        image = "technic_many_machines_forge.png",
+        desc = "This machines main purpose is to make new and/or better machines, such as MV Hydro Generator MK2. To build, first place the controller. Nodes avaliable for the floors and walls are HV Forge Wall part, and HV Glass Parts 1 and 2. Build a 5x5 platform, where it is the middle of the front. Place a power port somewhere on the perimeter of this platform. Use the avaliable walls to then make a hollow 5x5x5 cube, with the bottom being the base. Fill the cube with Forge Catalysts, then punch the controller. Power used varies depending on the recipe."
+    }
 }
 
 local function get_main_formspec()

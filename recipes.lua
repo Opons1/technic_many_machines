@@ -226,14 +226,26 @@ end
 --simple materials
 
 --machine processing recipes
+local recipes
 --compressor recipes
 technic.register_compressor_recipe({
     time = 4,
     input = {"technic:lead_ingot 5"},
     output = {"technic:lead_plate"}
 })
+--alloy furnace recipes
+recipes = {
+    {"default:steel_ingot 5", "dye:red", "technic_many_machines:blocker", 8}
+}
+for _, recipe in pairs(recipes) do
+	technic.register_alloy_recipe({
+        input = {recipe[1], recipe[2]},
+        output = recipe[3],
+        time = recipe[4]
+    })
+end
 --advanced alloy furnace recipes
-local recipes = {
+recipes = {
     { 8, "technic:coal_dust 2", "default:steel_ingot 4", "technic:chromium_ingot 1", "technic:stainless_steel_ingot 5"},
     { 6, "technic:coal_dust 2", "technic:steel_dust 4", "technic:chromium_dust 1", "technic:stainless_steel_ingot 5"},
     { 8, "technic:uranium0_ingot", "technic:stainless_steel_ingot 3", "default:mese_crystal_fragment", "technic_many_machines:radiant_alloy_ingot 4"},
@@ -270,6 +282,25 @@ for _, recipe in ipairs(recipes) do
         input = {recipe[2], recipe[3]},
         output = recipe[4]})
 end
+--THE FORGE
+recipes = {
+    {10, "technic_many_machines:hydro_mv_generator_mk2", 30000, "technic:hydro_turbine 4", "technic_many_machines:forge_plate", "technic_many_machines:forge_ingot", "technic:carbon_plate 2"},
+}
+for _, recipe in ipairs(recipes) do
+    local itemsneeded = {}
+    for index, item in ipairs(recipe) do
+        if index > 3 then
+            table.insert(itemsneeded, item)
+        end
+    end
+    technic_many_machines.register_forge_recipe({
+        time = recipe[1],
+        output = recipe[2],
+        power_draw = recipe[3],
+        input = itemsneeded,
+    })
+end
+
 --others
 if core.get_modpath("darkage") then
     technic.register_compressor_recipe({

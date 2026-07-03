@@ -56,7 +56,11 @@ register_craftitem("radiant_alloy_circuit", {
     description = S("Radiant Alloy Circuit"),
     inventory_image = "technic_many_machines_radiant_alloy_circuit.png",
 })
-
+--functional parts
+register_craftitem("blocker", {
+    description = S("Blocker"),
+    inventory_image = "technic_many_machines_blocker.png",
+})
 --helper to make registering metals easier
 local function register_metal(name, data)
     local color = data.color or "#ffffff"

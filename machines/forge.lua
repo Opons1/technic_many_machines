@@ -70,19 +70,6 @@ function technic_many_machines.register_forge_recipe(data)
     --add the recipe to the list
     table.insert(recipes, key)
 end
-technic_many_machines.register_forge_recipe({
-    time = 1,
-    input = {"default:dirt 2", "default:dirt 2", "default:dirt 2", "default:dirt 2", "default:dirt 2", "default:dirt 2", "default:dirt 2", "default:dirt 2"},
-    output = "default:cobble",
-    powerdraw = 120
-})
-
-technic_many_machines.register_forge_recipe({
-    time = 1,
-    input = {"default:cobble 2"},
-    output = "default:dirt 2",
-    powerdraw = 1000
-})
 
 --gets the forge recipe
 local function get_forge_recipe(input)
@@ -195,7 +182,7 @@ local formspec = "formspec_version[6]"
     .. "listcolors[#00bcd4;#008d9f]"
     .. "list[current_player;main;0.25,2.75;8,4;0]"
     .. "list[context;src;0.25,0.25;4,2;0]"
-    .. "list[context;dst;9,0.9;1,1;0]"
+    .. "list[context;dst;7.125,0.875;1,1;0]"
 dirchecks = {
     [0] = function(pos, playername)
         local posstring = core.pos_to_string(pos)
@@ -748,7 +735,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
             local contin = true
             for i = 1, 8 do
                 local item = inv:get_stack("src", i)
-                if item:is_empty() then
+                if item:is_empty() or item:get_name() == "technic_many_machines:blocker" then
                     break
                 else
                     table.insert(items, inv:get_stack("src", i):get_name())

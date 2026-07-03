@@ -35,51 +35,144 @@ end
 
 
 --machine parts
+--compressor piston
 register_craftitem("compressor_piston", {
     description = S("Compressor Piston"),
     inventory_image = "technic_many_machines_compressor_piston.png",
 })
+--color filter, for LCD
+register_craftitem("color_filter", {
+    description = S("Color Filter"),
+    inventory_image = "technic_many_machines_color_filter.png",
+})
+--lcd
+register_craftitem("lcd", {
+    description = S("LCD Screen"),
+    inventory_image = "technic_many_machines_lcd.png",
+})
+--curcuits
+--radiant alloy curcuit, the base one
+register_craftitem("radiant_alloy_circuit", {
+    description = S("Radiant Alloy Circuit"),
+    inventory_image = "technic_many_machines_radiant_alloy_circuit.png",
+})
 
+--helper to make registering metals easier
+local function register_metal(name, data)
+    local color = data.color or "#ffffff"
+    local intensity = data.intensity or 150
+    local light_source = data.light_source or 0
+    local radioactivity = data.radioactivity or 0
+    local title = data.title or name
+    local ingotgroups = table.copy(data.groups) or {}
+    ingotgroups["ingot"] = 1
+    register_craftitem(name .. "_ingot", {
+        description = S(title .. " Ingot"),
+        inventory_image = base_ingot .. "^[colorize:" .. color .. ":" .. intensity,
+        light_source = light_source,
+        groups = ingotgroups,
+    })
+
+    local dustgroups = table.copy(data.groups) or {}
+    dustgroups["dust"] = 1
+    register_craftitem(name .. "_dust", {
+        description = S(title .. " Dust"),
+        inventory_image = base_dust .. "^[colorize:" .. color .. ":" .. intensity,
+        light_source = light_source,
+        groups = dustgroups,
+    })
+    local blockgroups = table.copy(data.groups) or {}
+    blockgroups["block"] = 1
+    blockgroups["radioactive"] = radioactivity
+    blockgroups["cracky"] = data.cracky or 1
+    blockgroups["level"] = data.level or 2
+
+    register_node(name .. "_block", {
+        description = S(title .. " Block"),
+        tiles = {base_metal_block .. "^[colorize:" .. color .. ":" .. intensity},
+        groups = blockgroups,
+        light_source = light_source,
+    })
+    if data.enable_plate then
+        local plategroups = table.copy(data.groups) or {}
+        local presstime = data.presstime or 4
+        plategroups["plate"] = 1
+        register_craftitem(name .. "_plate", {
+            description = S(title .. " Plate"),
+            inventory_image = base_plate .. "^[colorize:" .. color .. ":" .. intensity,
+            light_source = light_source,
+            groups = plategroups,
+        })
+        technic.register_compressor_recipe({
+            input = {"technic_many_machines:" .. name .. "_ingot 5"},
+            output = {"technic_many_machines:" .. name .. "_plate"},
+            time = presstime,
+        })
+    end
+    
+    local fullname = "technic_many_machines:" .. name
+
+    core.register_craft({
+        type = "shapeless",
+        output = fullname .. "_ingot 9",
+        recipe = {fullname .. "_block"},
+    })
+
+    core.register_craft({
+        output = fullname .. "_block",
+        recipe = {
+            {fullname .. "_ingot", fullname .. "_ingot", fullname .. "_ingot"},
+            {fullname .. "_ingot", fullname .. "_ingot", fullname .. "_ingot"},
+            {fullname .. "_ingot", fullname .. "_ingot", fullname .. "_ingot"},
+        },
+    })
+
+    core.register_craft({
+        type = "cooking",
+        output = fullname .. "_ingot",
+        recipe = fullname .. "_dust",
+        time = data.cooktime or 3,
+    })
+
+    technic.register_grinder_recipe({
+        input = {fullname .. "_ingot"},
+        output = {fullname .. "_dust"},
+        time = data.grindtime or 2,
+    })
+end
 --ingots
 --radiant alloy ingot is made by alloying 0.0 fissile uranium with a mese fragment and stainless steel in advanced alloy furnace
-register_craftitem("radiant_alloy_ingot", {
-    description = S("Radiant Alloy"),
-    inventory_image = base_ingot.."^[colorize:#c8ff00:100",
+register_metal("radiant_alloy", {
+    title = "Radiant Alloy",
+    color = "#c8ff00",
+    intensity = 100,
     light_source = 7,
-})
-
-register_craftitem("radiant_alloy_dust", {
-    description = S("Radiant Alloy Dust"),
-    inventory_image = base_dust.."^[colorize:#c8ff00:100",
-    light_source = 7,
-})
-
-register_craftitem("radiant_alloy_plate", {
-    description = S("Radiant Alloy Plate"),
-    inventory_image = base_plate.."^[colorize:#c8ff00:100",
-    light_source = 7,
-})
-
-register_node("radiant_alloy_block", {
-    description = S("Radiant Alloy Block"),
-    tiles = {base_metal_block.."^[colorize:#c8ff00:100"},
-    groups = {cracky = 1, level = 2},
-    light_source = 7,
+    enable_plate = true,
+    presstime = 8,
 })
 --thorium, made in the radiation chamber by leaving uranium dust in it. The higher the fissile of uranium, the faster it is.
-register_craftitem("thorium_ingot", {
-    description = S("Thorium Ingot"),
-    inventory_image = base_ingot.."^[colorize:#273126:150",
+register_metal("thorium", {
+    title = "Thorium",
+    color = "#273126",
+    intensity = 150,
+    radioactivity = 2,
 })
-register_craftitem("thorium_dust", {
-    description = S("Thorium Dust"),
-    inventory_image = base_dust.."^[colorize:#273126:150",
+--forge alloy, used to make the forge
+register_metal("forge", {
+    title = "Forge",
+    color = "#012c2c",
+    intensity = 200,
+    enable_plate = true,
+    presstime = 12,
 })
-register_node("thorium_block", {
-    description = S("Thorium Block"),
-    tiles = {base_metal_block.."^[colorize:#273126:150"},
-    groups = {cracky = 1, level = 2, radioactive = 2},
+
+--misc parts that arent full ingots
+core.register_craftitem(":technic:lead_plate", {
+    description = S("Lead Plate"),
+    inventory_image = "technic_many_machines_lead_plate.png",
+    groups = {plate = 1},
 })
+
 --asteroid nodes
 --it can drop copper, tin, iron, coal, and lead in dust form
 local drops = {
@@ -104,19 +197,22 @@ core.register_node("technic_many_machines:asteroid_stone", {
 local function register_multiblock_part(name, data)
     data.groups["multiblock_part"] = 1
     data.on_destruct = function(pos)
-        local meta = minetest.get_meta(pos)
+        local meta = core.get_meta(pos)
         local controller_str = meta:get_string("multiblockcontrollerpos")
-        -- Check if the string is NOT empty before proceeding
+        --Check if the string is not empty before proceeding
         if controller_str ~= "" then
-            local ctrl_pos = minetest.string_to_pos(controller_str)
+            local ctrl_pos = core.string_to_pos(controller_str)
             if ctrl_pos then
-                local ctrl_meta = minetest.get_meta(ctrl_pos)
-                -- Use 0 to represent 'false' in metadata
+                local ctrl_meta = core.get_meta(ctrl_pos)
+                -- Use 0 to represent false in metadata
                 ctrl_meta:set_int("multiblockactive", 0)
             end
         end
     end
     register_node(name, data)
+end
+function technic_many_machines.register_multiblock_part(name, data)
+    register_multiblock_part(name, data)
 end
 register_multiblock_part("hv_mb_airlock", {
     description = "HV Airlock Part",
@@ -146,6 +242,26 @@ register_multiblock_part("hv_mb_casing", {
     tiles = {"technic_many_machines_damaged_hv_frame.png"},
     groups = {cracky = 1, level = 2},
 })
+register_multiblock_part("void", {
+    description = "Void", 
+    tiles = {
+        {
+            name = "technic_many_machines_void.png",
+            scale = 8,
+            align_style = "world",
+            animation = {
+                type = "vertical_frames",
+                aspect_w = 16,
+                aspect_h = 16,
+                length = 1, 
+            },
+        }
+    },
+    groups = {cracky = 1, level = 2},
+
+})
+
+
 --misc other stuff
 register_craftitem("radioactive_sludge", {
     description = S("Radioactive Sludge"),
@@ -165,3 +281,5 @@ if core.get_modpath("too_many_stones") then
         inventory_image = "technic_many_machines_crushed_galena.png"
     })
 end
+
+

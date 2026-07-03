@@ -103,9 +103,9 @@ core.register_on_mods_loaded(function()
     asteroidoutputnodes["technic_many_machines:asteroid_uranium_ore"] = 3
     asteroidoutputnodes["technic_many_machines:asteroid_zinc_ore"] = 4
     asteroidoutputnodes["technic_many_machines:asteroid_chromium_ore"] = 4
-    asteroidoutputnodes["technic_many_machines:asteroid_silver_ore"] = 4
-    asteroidoutputnodes["technic_many_machines:asteroid_mithril_ore"] = 3
-    asteroidoutputnodes["technic_many_machines:asteroid_sulfur_ore"] = 5
+    asteroidoutputnodes["technic_many_machines:asteroid_silver_ore"] = 3
+    asteroidoutputnodes["technic_many_machines:asteroid_mithril_ore"] = 1
+    asteroidoutputnodes["technic_many_machines:asteroid_sulfur_ore"] = 4
 
 
 

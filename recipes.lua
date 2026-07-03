@@ -126,6 +126,49 @@ core.register_craft({
         {"technic:composite_plate", "technic:hv_cable", "technic:composite_plate"},
     }
 })
+--forge.lua
+core.register_craft({
+    output = "technic_many_machines:hv_forge_controller",
+    recipe = {
+        {"technic_many_machines:forge_plate", "technic_many_machines:lcd", "technic_many_machines:forge_plate"},
+        {"technic_many_machines:radiant_alloy_circuit", "technic_many_machines:hv_forge_wall", "technic_many_machines:forge_plate"},
+        {"technic_many_machines:forge_plate", "technic:hv_cable", "technic_many_machines:forge_plate"},
+    }
+})
+
+core.register_craft({
+    output = "technic_many_machines:hv_forge_wall", 
+    recipe = {
+        {"default:obsidian", "technic:carbon_plate", "default:obsidian"},
+        {"technic:carbon_plate", "technic_many_machines:forge_block", "technic:carbon_plate"},
+        {"technic:lead_plate", "technic:carbon_plate", "technic:lead_plate"},
+    }
+})
+
+core.register_craft({
+    output = "technic_many_machines:hv_forge_power", 
+    type = "shapeless",
+    recipe = {"technic:hv_cable", "technic_many_machines:forge_wall"}
+})
+
+core.register_craft({
+    output = "technic_many_machines:hv_forge_glass 4", 
+    recipe = {
+        {"technic_many_machines:forge_ingot", "technic_many_machines:hv_forge_wall", "technic_many_machines:forge_ingot"},
+        {"technic_many_machines:hv_forge_wall", "default:glass", "technic_many_machines:hv_forge_wall"},
+        {"technic_many_machines:forge_ingot", "technic_many_machines:hv_forge_wall", "technic_many_machines:forge_ingot"},
+    }
+})
+
+core.register_craft({
+    output = "technic_many_machines:hv_forge_glass_2 4", 
+    recipe = {
+        {"technic_many_machines:forge_ingot", "technic_many_machines:hv_forge_wall", "technic_many_machines:forge_ingot"},
+        {"technic_many_machines:hv_forge_wall", "default:obsidian_glass", "technic_many_machines:hv_forge_wall"},
+        {"technic_many_machines:forge_ingot", "technic_many_machines:hv_forge_wall", "technic_many_machines:forge_ingot"},
+    }
+})
+
 --machine parts
 core.register_craft({
     output = "technic_many_machines:compressor_piston",
@@ -134,6 +177,37 @@ core.register_craft({
         {"technic:cast_iron_ingot", "basic_materials:carbon_steel_bar", "technic:cast_iron_ingot"},
         {"technic:carbon_plate", "technic:carbon_plate", "technic:carbon_plate"},
 }})
+
+core.register_craft({
+    output = "technic_many_machines:color_filter 1",
+    recipe = {
+        {"", "xpanes:pane_flat", ""},
+        {"dye:red", "dye:green", "dye:blue"},
+        {"", "xpanes:pane_flat", ""}
+    }
+})
+
+core.register_craft({
+    output = "technic_many_machines:lcd",
+    recipe = {
+        {"xpanes:pane_flat", "technic_many_machines:color_filter"},
+        {"technic:lv_led", "technic:doped_silicon_wafer"},
+    }
+})
+
+core.register_craft({
+    output = "technic_many_machines:radiant_alloy_circuit",
+    recipe = {
+        {"basic_materials:gold_wire", "basic_materials:copper_strip", "basic_materials:gold_wire"},
+        {"basic_materials:ic", "technic_many_machines:radiant_alloy_plate", "basic_materials:ic"},
+        {"technic:control_logic_unit", "basic_materials:plastic_strip", "technic:control_logic_unit"},
+    },
+    replacements = {
+        {"basic_materials:gold_wire", "basic_materials:empty_spool"}
+    }
+})
+
+
 --raw materials
 if core.get_modpath("underch") then
     technic.register_grinder_recipe({
@@ -151,62 +225,51 @@ if core.get_modpath("too_many_stones") then
 end
 --simple materials
 
---blocks
-local raling = "technic_many_machines:radiant_alloy_ingot"
-local ralblock = "technic_many_machines:radiant_alloy_block"
-local raldust = "technic_many_machines:radiant_alloy_dust"
-local ralplate = "technic_many_machines:radiant_alloy_plate"
-
-core.register_craft({
-    type = "shapeless",
-    output = ralblock,
-    recipe = {raling, raling, raling, raling, raling, raling, raling, raling, raling}
-})
-core.register_craft({
-    type = "shapeless",
-    output = raling .. " 9",
-    recipe = {ralblock}
-})
-core.register_craft({
-    type = "cooking", 
-    output = raling,
-    recipe = raldust,
-    time = 6,
-})
-technic.register_grinder_recipe({
-    time = 4,
-    input = {raling},
-    output = {raldust}
-})
+--machine processing recipes
+--compressor recipes
 technic.register_compressor_recipe({
-    time = 8,
-    input = {raling .. " 5"},
-    output = {ralplate}
+    time = 4,
+    input = {"technic:lead_ingot 5"},
+    output = {"technic:lead_plate"}
 })
-local thorblock = "technic_many_machines:thorium_block"
-local thoring = "technic_many_machines:thorium_ingot"
-local thordust = "technic_many_machines:thorium_dust"
-core.register_craft({
-    output = thorblock,
-    type = "shapeless",
-    recipe = {thoring, thoring, thoring, thoring, thoring, thoring, thoring, thoring, thoring}
-})
-core.register_craft({
-    output = thoring .. " 9",
-    type = "shapeless",
-    recipe = {thorblock}
-})
-core.register_craft({
-    type = "cooking", 
-    output = thoring,
-    recipe = thordust,
-    time = 3,
-})
-technic.register_grinder_recipe({
-    time = 2,
-    input = {thoring},
-    output = {thordust}
-})
+--advanced alloy furnace recipes
+local recipes = {
+    { 8, "technic:coal_dust 2", "default:steel_ingot 4", "technic:chromium_ingot 1", "technic:stainless_steel_ingot 5"},
+    { 6, "technic:coal_dust 2", "technic:steel_dust 4", "technic:chromium_dust 1", "technic:stainless_steel_ingot 5"},
+    { 8, "technic:uranium0_ingot", "technic:stainless_steel_ingot 3", "default:mese_crystal_fragment", "technic_many_machines:radiant_alloy_ingot 4"},
+    { 4, "technic_many_machines:radiant_alloy_dust", "default:mese_crystal_fragment", "technic_many_machines:hv_mb_casing", "technic_many_machines:hv_mb_airlock"},
+    { 6, "technic:graphite 5", "moreores:mithril_ingot 2", "technic:lead_ingot 6", "technic_many_machines:forge_ingot 2"},
+    { 6, "technic:graphite 5", "technic:mithril_dust 2", "technic:lead_dust 6", "technic_many_machines:forge_ingot 2"},
+    { 4, "technic:uranium0_dust", "technic:stainless_steel_dust 3", "default:mese_crystal_fragment", "technic_many_machines:radiant_alloy_ingot 4"},
+}
+
+for _, recipe in ipairs(recipes) do
+    technic_many_machines.register_advanced_alloy_furnace_recipe({
+        time = recipe[1],
+        input = {recipe[2], recipe[3], recipe[4]},
+        output = recipe[5]})
+end
+--mass compressor recipes
+--not wanting to type a lot, also you might not wanna replace you compressor with this, this thing might be too heavy duty for some things
+recipes = {
+    { 2, "default:copper_ingot 10", "default:copper_ingot 10", "technic:copper_plate 4"},
+    { 2, "default:sand 20", "default:sand 20", "default:sandstone 20"},
+    { 2, "default:desert_sand 20", "default:desert_sand 20", "default:desert_sandstone 20"},
+    { 2, "default:silver_sand 20", "default:silver_sand 20", "default:silver_sandstone 20"},
+    { 2, "technic:mixed_metal_ingot 2", "technic:mixed_metal_ingot 2", "technic:composite_plate 4"},
+    { 2, "technic:coal_dust 24", "technic:coal_dust 24", "technic:carbon_plate 4"},
+	{ 10,"default:coal_lump 25", "default:coal_lump 25", "default:diamond"},
+    { 4, "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_ingot 10", "technic_many_machines:radiant_alloy_plate 4"},
+    { 2, "technic_many_machines:radiant_alloy_plate", "technic:blast_resistant_concrete 2", "technic_many_machines:hv_mb_casing"},
+    { 2, "technic_many_machines:hv_mb_casing", "default:obsidian_glass 4", "technic_many_machines:hv_mb_glass"},
+    { 40, "technic_many_machines:forge_plate 10", "technic:lead_plate 10", "technic_many_machines:forge_catalyst"}
+}
+for _, recipe in ipairs(recipes) do
+    technic_many_machines.register_bulk_compressor_recipe({
+        time = recipe[1],
+        input = {recipe[2], recipe[3]},
+        output = recipe[4]})
+end
 --others
 if core.get_modpath("darkage") then
     technic.register_compressor_recipe({

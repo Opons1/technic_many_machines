@@ -11,7 +11,8 @@ technic.register_recipe_type("cobblestone_generating", {
 technic.register_recipe("cobblestone_generating", {
     input = {""},
     output = {"default:cobble"},
-    time = 1})
+    time = 1
+})
 
 --LV cobble gen
 technic.register_base_machine("technic_many_machines:lv_cobble_generator", {

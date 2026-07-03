@@ -296,7 +296,7 @@ for _, recipe in ipairs(recipes) do
     technic_many_machines.register_forge_recipe({
         time = recipe[1],
         output = recipe[2],
-        power_draw = recipe[3],
+        powerdraw = recipe[3],
         input = itemsneeded,
     })
 end

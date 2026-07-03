@@ -663,7 +663,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
         "technic_many_machines_forge_wall.png",
         "technic_many_machines_forge_controller.png"
     },
-    groups = {cracky = 1, level = 2},
+    groups = {cracky = 1, level = 2, tubedevice = 1, tubedevice_receiver = 1},
     paramtype2 = "facedir",
     allow_metadata_inventory_move = function(pos, from_list, from_index, to_list, to_index, count, player)
         local playername = player:get_player_name()
@@ -788,8 +788,6 @@ core.register_node("technic_many_machines:hv_forge_controller", {
                 pmeta:set_int("HV_EU_demand_set", 100)
             end
         end
-
-       
         return true
     end,
     on_construct = function(pos)
@@ -808,5 +806,21 @@ core.register_node("technic_many_machines:hv_forge_controller", {
         if dir < 4 then
             dirsforclear[dir](pos, strpos)
         end
-    end
+    end,
+    after_dig_node = pipeworks.after_dig,
+	after_place_node = pipeworks.after_place,
+    tube = {
+	    input_inventory = "dst",
+        connect_sides = {left = 1, right = 1, back = 1, front = 1, bottom = 1, top = 1},
+    	insert_object = function(pos, node, stack, direction, owner)
+            local meta = core.get_meta(pos)
+			local inv = meta:get_inventory()
+            return inv:add_item("src", stack)
+        end,
+        can_insert = function(pos,node,stack,direction)
+            local meta = core.get_meta(pos)
+            local inv = meta:get_inventory()
+			return inv:room_for_item("src", stack)	
+		end,
+    }
 })

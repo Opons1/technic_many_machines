@@ -148,7 +148,7 @@ core.register_craft({
 core.register_craft({
     output = "technic_many_machines:hv_forge_power", 
     type = "shapeless",
-    recipe = {"technic:hv_cable", "technic_many_machines:forge_wall"}
+    recipe = {"technic:hv_cable", "technic_many_machines:hv_forge_wall"}
 })
 
 core.register_craft({

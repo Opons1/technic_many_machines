@@ -300,6 +300,17 @@ for _, recipe in ipairs(recipes) do
         input = itemsneeded,
     })
 end
+--radiation chamber
+for i = 0, 35 do
+    if i == 7 then num = ""
+    else num = i
+    end
+    technic.register_recipe("radiation_chamber", {
+        output = {"technic_many_machines:thorium_dust", "technic_many_machines:radioactive_sludge"},
+        input = {"technic:uranium" .. num .. "_dust 10"},
+        time = 60 - i,
+    })
+end
 
 --others
 if core.get_modpath("darkage") then

@@ -1,21 +1,11 @@
 local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("radiation_chamber", {
     description = S("Irradiating"),
-    inventory_image = "technic_many_machines_hv_radiation_chamber.png^sheet:5x1:0,0]",
+    icon = "technic_many_machines_hv_radiation_chamber.png",
     input_size = 1,
     output_size = 2,
 
 })
-for i = 0, 35 do
-    if i == 7 then num = ""
-    else num = i
-    end
-    technic.register_recipe("radiation_chamber", {
-        output = {"technic_many_machines:thorium_dust", "technic_many_machines:radioactive_sludge"},
-        input = {"technic:uranium" .. num .. "_dust 10"},
-        time = 60 - i,
-    })
-end
 technic.register_base_machine("technic_many_machines:hv_radiation_chamber", {
     typename = "radiation_chamber",
     description = S("HV Radiation Chamber"),

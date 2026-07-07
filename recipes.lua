@@ -1,4 +1,5 @@
 --recipes for machines
+--mass_compressor.lua
 core.register_craft({
     output = "technic_many_machines:hv_masscompressor",
     recipe = {
@@ -6,6 +7,7 @@ core.register_craft({
         {"technic:hv_cable", "technic:hv_transformer", "default:tinblock"},
         {"technic:carbon_plate", "technic:mv_compressor", "technic:carbon_plate"},
 }})
+--bulk_alloy_furnace.lua
 core.register_craft({
     output = "technic_many_machines:hv_alloy_furnace",
     recipe = {
@@ -13,6 +15,7 @@ core.register_craft({
         {"technic:mv_alloy_furnace", "technic:mv_alloy_furnace", "technic:mv_alloy_furnace"},
         {"technic:composite_plate", "technic:hv_transformer", "technic:composite_plate"},
 }})
+--advanced_alloy_furnace.lua
 core.register_craft({
     output = "technic_many_machines:hv_advancedalloyfurnace",
     recipe = {
@@ -309,6 +312,155 @@ for i = 0, 35 do
         output = {"technic_many_machines:thorium_dust", "technic_many_machines:radioactive_sludge"},
         input = {"technic:uranium" .. num .. "_dust 10"},
         time = 60 - i,
+    })
+end
+--crusher
+local function getpn(name, count)
+    return "technic_many_machines:" .. name .. "_piece " .. count
+end
+recipes = {
+    --default
+    {4, "default:pick_wood", "default:stick 9"},
+    --worlds strangest way to make cobblestone
+    {4, "default:pick_stone", "default:cobble 2"},
+    {4, "default:pick_steel", getpn("steel", 19),},
+    {4, "default:pick_bronze", getpn("bronze", 19)},
+    {4, "default:pick_mese", "default:mese_crystal_fragment 19"},
+    {3, "default:pick_diamond", "default:diamond 2"},
+    {4, "default:axe_bronze", getpn("bronze", 19)},
+    {3, "default:axe_diamond", "default:diamond 2"},
+    {4, "default:axe_mese", "default:mese_crystal_fragment 19"},
+    {4, "default:axe_steel", getpn("steel", 19)},
+    {4, "default:axe_stone", "default:cobble 2"},
+    {4, "default:axe_wood", "default:stick 9"},
+    {4, "default:shovel_bronze", getpn("bronze", 7)},
+    {4, "default:shovel_diamond", "default:diamond"},
+    {4, "default:shovel_mese", "default:mese__crystal_fragment 7"},
+    {4, "default:shovel_steel", getpn("steel", 7)},
+    {4, "default:shovel_wood", "default:stick 4"},
+    {4, "default:shovel_stone", "default:cobble"},
+    {4, "default:sword_bronze", getpn("bronze", 13)},
+    {4, "default:sword_diamond", "default:diamond"},
+    {4, "default:sword_mese", "default:mese_crystal_fragment 13"},
+    {4, "default:sword_steel", getpn("steel", 13)},
+    {4, "default:sword_wood", "default:stick 6"},
+    {4, "default:sword_stone", "default:cobble 2"},
+
+    --moreores
+    --mithril
+    {4, "moreores:axe_mithril", getpn("mithril", 19)},
+    {4, "moreores:hoe_mithril", getpn("mithril", 13)},
+    {4, "moreores:pick_mithril", getpn("mithril", 19)},
+    {4, "moreores:shovel_mithril", getpn("mithril", 7)},
+    {4, "moreores:sword_mithril", getpn("mithril", 13)},
+    --silver
+    {4, "moreores:axe_silver", getpn("silver", 19)},
+    {4, "moreores:hoe_silver", getpn("silver", 13)},
+    {4, "moreores:pick_silver", getpn("silver", 19)},
+    {4, "moreores:shovel_silver", getpn("silver", 7)},
+    {4, "moreores:sword_silver", getpn("silver", 13)},
+}
+--no optional dependency on this since it doesnt really matter
+if core.get_modpath("3d_armor") then
+    local armor = {
+    --bronze
+    {4, "3d_armor:boots_bronze", getpn("bronze", 24)},
+    {4, "3d_armor:chestplate_bronze", getpn("bronze", 48)},
+    {4, "3d_armor:helmet_bronze", getpn("bronze", 30)},
+    {4, "3d_armor:leggings_bronze", getpn("bronze", 42)},
+    {4, "3d_armor:shield_bronze", getpn("bronze", 48)},
+    --diamond
+    {4, "3d_armor:boots_diamond", "default:diamond 3"},
+    {4, "3d_armor:chestplate_diamond", "default:diamond 6"},
+    {4, "3d_armor:helmet_diamond", "default:diamond 4"},
+    {4, "3d_armor:leggings_diamond", "default:diamond 6"},
+    {4, "3d_armor:shield_diamond", "default:diamond 6"},
+    --gold
+    {4, "3d_armor:boots_gold", getpn("gold", 24)},
+    {4, "3d_armor:chestplate_gold", getpn("gold", 48)},
+    {4, "3d_armor:helmet_gold", getpn("gold", 30)},
+    {4, "3d_armor:leggings_gold", getpn("gold", 42)},
+    {4, "3d_armor:shield_gold", getpn("gold", 48)},
+    --mithril
+    {4, "3d_armor:boots_mithril", getpn("mithril", 24)},
+    {4, "3d_armor:chestplate_mithril", getpn("mithril", 48)},
+    {4, "3d_armor:helmet_mithril", getpn("mithril", 30)},
+    {4, "3d_armor:leggings_mithril", getpn("mithril", 42)},
+    {4, "3d_armor:shield_mithril", getpn("mithril", 48)},
+    --steel
+    {4, "3d_armor:boots_steel", getpn("steel", 24)},
+    {4, "3d_armor:chestplate_steel", getpn("steel", 48)},
+    {4, "3d_armor:helmet_steel", getpn("steel", 30)},
+    {4, "3d_armor:leggings_steel", getpn("steel", 42)},
+    {4, "3d_armor:shield_steel", getpn("steel", 48)},
+}
+table.insert_all(recipes, armor)
+end
+if core.get_modpath("technic_armor") then
+    local technic_armor = {
+    --brass
+    {4, "technic_armor:boots_brass", getpn("brass", 24)},
+    {4, "technic_armor:chestplate_brass", getpn("brass", 48)},
+    {4, "technic_armor:helmet_brass", getpn("brass", 30)},
+    {4, "technic_armor:leggings_brass", getpn("brass", 42)},
+    {4, "technic_armor:shield_brass", getpn("brass", 48)},
+    --carbon steel
+    {4, "technic_armor:boots_carbon", getpn("carbon_steel", 24)},
+    {4, "technic_armor:chestplate_carbon", getpn("carbon_steel", 48)},
+    {4, "technic_armor:helmet_carbon", getpn("carbon_steel", 30)},
+    {4, "technic_armor:leggings_carbon", getpn("carbon_steel", 42)},
+    {4, "technic_armor:shield_carbon", getpn("carbon_steel", 48)},
+    --cast iron
+    {4, "technic_armor:boots_cast", getpn("cast_iron", 24)},
+    {4, "technic_armor:chestplate_cast", getpn("cast_iron", 48)},
+    {4, "technic_armor:helmet_cast", getpn("cast_iron", 30)},
+    {4, "technic_armor:leggings_cast", getpn("cast_iron", 42)},
+    {4, "technic_armor:shield_cast", getpn("cast_iron", 48)},
+    --lead
+    {4, "technic_armor:boots_lead", getpn("lead", 24)},
+    {4, "technic_armor:chestplate_lead", getpn("lead", 48)},
+    {4, "technic_armor:helmet_lead", getpn("lead", 30)},
+    {4, "technic_armor:leggings_lead", getpn("lead", 42)},
+    {4, "technic_armor:shield_lead", getpn("lead", 48)},
+    --silver
+    {4, "technic_armor:boots_silver", getpn("silver", 24)},
+    {4, "technic_armor:chestplate_silver", getpn("silver", 48)},
+    {4, "technic_armor:helmet_silver", getpn("silver", 30)},
+    {4, "technic_armor:leggings_silver", getpn("silver", 42)},
+    {4, "technic_armor:shield_silver", getpn("silver", 48)},
+    --stainless steel
+    {4, "technic_armor:boots_stainless", getpn("stainless_steel", 24)},
+    {4, "technic_armor:chestplate_stainless", getpn("stainless_steel", 48)},
+    {4, "technic_armor:helmet_stainless", getpn("stainless_steel", 30)},
+    {4, "technic_armor:leggings_stainless", getpn("stainless_steel", 42)},
+    {4, "technic_armor:shield_stainless", getpn("stainless_steel", 48)},
+    --tin
+    {4, "technic_armor:boots_tin", getpn("tin", 24)},
+    {4, "technic_armor:chestplate_tin", getpn("tin", 48)},
+    {4, "technic_armor:helmet_tin", getpn("tin", 30)},
+    {4, "technic_armor:leggings_tin", getpn("tin", 42)},
+    {4, "technic_armor:shield_tin", getpn("tin", 48)},
+}
+table.insert_all(recipes, technic_armor)
+end
+
+if core.get_modpath("underch") then
+    table.insert(recipes, {
+    30, "underch:malachite", "technic_many_machines:crushed_malachite 3"
+    })
+end
+
+if core.get_modpath("too_many_stones") then
+    table.insert(recipes, {
+    30, "too_many_stones:galena", "technic_many_machines:crushed_galena 2"
+    })
+end
+
+for _, recipe in ipairs(recipes) do
+    technic_many_machines.register_crusher_recipe({
+        time = recipe[1],
+        input = {recipe[2]},
+        output = {recipe[3],  recipe[4], recipe[5], recipe[6]}
     })
 end
 

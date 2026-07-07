@@ -11,6 +11,8 @@ technic.register_cable("technic_many_machines:ev_cable", {
 --i need help, the code in the cryptominer is garbage but idk how to make better
 local enable_cryptominer = core.settings:get_bool("technic_many_machines_enable_cryptominer") or false
 technic_many_machines.cryptominer_output = core.settings:get("technic_many_machines_cryptominer_output") or ""
+--crusher cuz yes
+dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
 --items
 dofile(core.get_modpath("technic_many_machines").."/items.lua")
 --tools
@@ -29,7 +31,6 @@ end
 dofile(core.get_modpath("technic_many_machines").."/machines/drop_extractor.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/asteroidteleporter.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/radiation_chamber.lua")
-dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/forge.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/hydro.lua")
 

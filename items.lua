@@ -1,15 +1,24 @@
 local S = core.get_translator("technic_many_machines")
+
+local function getfullname(name)
+    return "technic_many_machines:"..name
+end
+
+--just adds technic_many_machines: to it
 local function register_craftitem(name, def)
-    core.register_craftitem("technic_many_machines:"..name, def)
+    core.register_craftitem(getfullname(name), def)
 end
+
 local register_node = function(name, def)
-    core.register_node("technic_many_machines:"..name, def)
+    core.register_node(getfullname(name), def)
 end
+
 --some modified textures that are useful
 local base_ingot = "default_steel_ingot.png^[colorize:#ffffff:100"
 local base_dust = "technic_silver_dust.png"
 local base_plate = "technic_many_machines_base_plate.png"
 local base_metal_block = "technic_many_machines_base_metal_block.png"
+local base_metal_piece = "technic_many_machines_base_metal_piece.png"
 
 
 local enable_test_items = core.settings:get_bool("technic_many_machines_enable_test_items", false)
@@ -31,10 +40,14 @@ if enable_test_items then
         tiles = {base_metal_block},
         groups = {cracky = 1, level = 2},
     })
+    register_craftitem("base_metal_piece", {
+        description = S("Base Metal piece (Test Item)"),
+        inventory_image = base_metal_piece
+    })
 end
 
 
---machine parts
+--MACHINE PARTS
 --compressor piston
 register_craftitem("compressor_piston", {
     description = S("Compressor Piston"),
@@ -61,6 +74,40 @@ register_craftitem("blocker", {
     description = S("Blocker"),
     inventory_image = "technic_many_machines_blocker.png",
 })
+
+
+--helper to make registering metal pieces easier
+local function register_metal_piece(name, data)
+    local item = data.item or nil
+    local color = data.color or "#ffffff"
+    local intensity = data.intensity or 150
+    local light_source = data.light_source or 0
+    local title = data.title or name
+    local mpgroups = table.copy(data.groups) or {}
+    mpgroups["metal_piece"] = 1
+    core.register_craftitem("technic_many_machines:" .. name .. "_piece", {
+        inventory_image = base_metal_piece .. "^[colorize:" .. color .. ":" .. intensity,
+        light_source = light_source,
+        groups = mpgroups,
+        description = S(title .. " Piece")
+    })
+    if data.item then
+    technic_many_machines.register_crusher_recipe({
+        input = {item},
+        output = {"technic_many_machines:" .. name .. "_piece 9"},
+        time = 4,
+    })
+
+    technic.register_compressor_recipe({
+        input = {"technic_many_machines:" .. name .. "_piece 9"},
+        output = {item},
+        time = 4
+    })
+    end
+    return "technic_many_machines:" .. name .. "_metal_piece"
+end
+
+
 --helper to make registering metals easier
 local function register_metal(name, data)
     local color = data.color or "#ffffff"
@@ -113,9 +160,8 @@ local function register_metal(name, data)
             time = presstime,
         })
     end
-    
+    local metalpiece = register_metal_piece(name, data)
     local fullname = "technic_many_machines:" .. name
-
     core.register_craft({
         type = "shapeless",
         output = fullname .. "_ingot 9",
@@ -177,6 +223,50 @@ core.register_craftitem(":technic:lead_plate", {
     groups = {plate = 1},
 })
 
+--metal pieces
+--i got the colors from the darkest part of the non border part of the texture
+local pieces = {
+    --item name color title intensity luminance groups
+    --default
+    {"default:bronze_ingot", "bronze", "#af4e13", "Bronze"},
+    {"default:copper_ingot", "copper", "#b8722e", "Copper"},
+    {"default:gold_ingot", "gold", "#d2a700", "Gold"},
+    {"default:steel_ingot", "steel", "#888581", "Wrought Iron"},
+    {"default:tin_ingot", "tin", "#9a9795", "Tin"},
+    --basic materials
+    {"basic_materials:brass_ingot", "brass", "#a87f23", "Brass"},
+    --moreores
+    {"moreores:silver_ingot", "silver", "#a7bfca", "Silver"},
+    {"moreores:mithril_ingot", "mithril", "#a7bfca", "Mithril"},
+    --technic
+    {"technic:carbon_steel_ingot", "carbon_steel", "#7f84aa", "Carbon Steel"},
+    {"technic:cast_iron_ingot", "cast_iron", "#6265a7", "Cast Iron"},
+    {"technic:chromium_ingot", "chromium", "#c7d8d8", "Chromium"},
+    {"technic:lead_ingot", "lead", "#838383", "Lead"},
+    {"technic:stainless_steel_ingot", "stainless_steel", "#d0d0d0", "Stainless Steel"},
+    {"technic:zinc_ingot", "zinc", "#a3d4e2", "Zinc"}
+}
+
+--uranium sold seperately
+local ucolor = "#aeeba7"
+
+for i = 0, 35 do
+    local groups = {}
+    local rnum = i
+    if i == 7 then 
+        num = ""
+    else
+        num = i
+        groups["not_in_creative_inventory"] = 1
+    end
+    local uraniumname = "technic:uranium" .. num .. "_ingot"
+    local uraniumtitle = (rnum/10) .. "%-Fissile Uranium"
+    table.insert(pieces, {uraniumname, "uranium" .. num, ucolor, uraniumtitle, nil, nil, groups})
+end
+
+for _, data in ipairs(pieces) do
+    register_metal_piece(data[2], {item = data[1], color = data[3], title = data[4], intensity = data[5], light_source = data[6], groups = data[7]})
+end
 --asteroid nodes
 --it can drop copper, tin, iron, coal, and lead in dust form
 local drops = {

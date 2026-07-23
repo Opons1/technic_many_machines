@@ -287,7 +287,8 @@ for _, recipe in ipairs(recipes) do
 end
 --THE FORGE
 recipes = {
-    {10, "technic_many_machines:hydro_mv_generator_mk2", 30000, "technic:hydro_turbine 4", "technic_many_machines:forge_plate", "technic_many_machines:forge_ingot", "technic:carbon_plate 2"},
+    {10, "technic_many_machines:hydro_mv_generator_mk2", 30000, "technic:hydro_turbine 3", "technic_many_machines:forge_plate", "technic_many_machines:forge_ingot", "technic:carbon_plate 2"},
+    {10, "technic_many_machines:hv_grinder_mk2", 40000, "technic:hv_grinder 2", "technic_many_machines:forge_plate 4", "technic:carbon_plate 3", "technic_many_machines:radiant_alloy_plate 2", "technic:diamond_drill_head 2", "technic_many_machines:radiant_alloy_circuit"}
 }
 for _, recipe in ipairs(recipes) do
     local itemsneeded = {}

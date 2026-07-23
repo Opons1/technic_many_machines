@@ -35,6 +35,7 @@ dofile(core.get_modpath("technic_many_machines").."/machines/asteroidteleporter.
 dofile(core.get_modpath("technic_many_machines").."/machines/radiation_chamber.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/forge.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/hydro.lua")
+dofile(core.get_modpath("technic_many_machines").."/machines/grinder.lua")
 
 --dofile(core.get_modpath("technic_many_machines").."/machines/areaminer.lua")
 

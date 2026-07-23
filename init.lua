@@ -15,6 +15,8 @@ technic_many_machines.cryptominer_output = core.settings:get("technic_many_machi
 dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
 --items
 dofile(core.get_modpath("technic_many_machines").."/items.lua")
+--decorative
+dofile(core.get_modpath("technic_many_machines") .. "/decorative.lua")
 --tools
 --dofile(core.get_modpath("technic_many_machines").."/tools.lua")
 
@@ -33,6 +35,9 @@ dofile(core.get_modpath("technic_many_machines").."/machines/asteroidteleporter.
 dofile(core.get_modpath("technic_many_machines").."/machines/radiation_chamber.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/forge.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/hydro.lua")
+
+--dofile(core.get_modpath("technic_many_machines").."/machines/areaminer.lua")
+
 
 dofile(core.get_modpath("technic_many_machines").."/recipes.lua")
 

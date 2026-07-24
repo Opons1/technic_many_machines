@@ -67,7 +67,7 @@ for _, name in ipairs(blocks) do
             sounds = node.sounds or nil
         })
         core.register_craft({
-            output = newname .. " 4",
+            output = newname .. " 9",
             recipe = {
                 {name, name, name},
                 {name, name, name},

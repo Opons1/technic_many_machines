@@ -132,10 +132,11 @@ register_multiblock_part("hv_forge_power", {
         local supply = meta:get_int("HV_EU_input")
         if supply >= demand then
             cmeta:set_int("powered", 1)
+            meta:set_string("infotext", "HV Power Port Active")
         else
+            meta:set_string("infotext", "HV Power Port Unpowered")
             cmeta:set_int("powered", 0)
         end
-        meta:set_int("HV_EU_demand", meta:get_int("HV_EU_demand_set"))
     end
 })
 
@@ -767,7 +768,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
                     meta:set_string("infotext", "HV Forge Active")
                     local powerportpos = core.string_to_pos(meta:get_string("powerportpos"))
                     local pmeta = core.get_meta(powerportpos)
-                    pmeta:set_int("HV_EU_demand_set", recipe.powerdraw)
+                    pmeta:set_int("HV_EU_demand", recipe.powerdraw)
                 else
                     meta:set_string("infotext", "HV Forge Idle")
                 end
@@ -776,6 +777,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
             end
         else
             local time_left = meta:get_int("time_left")
+            meta:set_string("infotext", "HV Forge Active")
             meta:set_int("time_left", time_left - 1)
             if time_left == 0 then
                 local index = meta:get_int("currentprocess")
@@ -785,7 +787,7 @@ core.register_node("technic_many_machines:hv_forge_controller", {
                 meta:set_int("currentprocess", 0)
                 local powerportpos = core.string_to_pos(meta:get_string("powerportpos"))
                 local pmeta = core.get_meta(powerportpos)
-                pmeta:set_int("HV_EU_demand_set", 100)
+                pmeta:set_int("HV_EU_demand", 100)
             end
         end
         return true

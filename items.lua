@@ -352,7 +352,7 @@ register_multiblock_part("void", {
         }
     },
     groups = {cracky = 1, level = 2},
-
+    drop = ""
 })
 
 

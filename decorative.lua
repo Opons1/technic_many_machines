@@ -76,3 +76,31 @@ for _, name in ipairs(blocks) do
         })
     end
 end
+
+
+--others
+core.register_node("technic_many_machines:uranium_glass", {
+    description = "Uranium Glass",
+    use_texture_alpha = "blend",
+    paramtype = "light",
+    drawtype = "glasslike_framed",
+    tiles = {"technic_many_machines_uranium_glass_frame.png", "technic_many_machines_uranium_glass.png"},
+    groups = {cracky = 3, level = 2},
+    light_source = 8,
+})
+
+xpanes.register_pane("uranium_pane", {
+    description = "Uranium Glass Pane",
+    textures = {
+        "technic_many_machines_uranium_glass.png",
+        "",
+        "technic_many_machines_uranium_glass.png",
+    },
+    groups = {cracky = 3, level = 2},
+    light_source = 7,
+	recipe = {
+		{"technic_many_machines:uranium_glass", "technic_many_machines:uranium_glass", "technic_many_machines:uranium_glass"},
+		{"technic_many_machines:uranium_glass", "technic_many_machines:uranium_glass", "technic_many_machines:uranium_glass"}
+    },
+    use_texture_alpha = "blend"
+})

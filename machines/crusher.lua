@@ -10,7 +10,7 @@ technic.register_base_machine("technic_many_machines:mv_crusher", {
     description = S("MV Crusher"),
     tier = "MV", 
     speed = 1,
-    demand = {6000, 5000, 4000},
+    demand = {3000, 2000, 1000},
     upgrade = 1,
     tube = 1,
 })

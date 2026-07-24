@@ -171,6 +171,16 @@ core.register_craft({
         {"technic_many_machines:forge_ingot", "technic_many_machines:hv_forge_wall", "technic_many_machines:forge_ingot"},
     }
 })
+--crusher.lua
+
+core.register_craft({
+    output = "technic_many_machines:mv_crusher",
+    recipe = {
+        {"technic:stainless_steel_ingot", "technic:lv_grinder", "technic:stainless_steel_ingot"},
+        {"technic:mv_cable", "technic:mv_transformer", "pipeworks:tube_1"},
+        {"technic:stainless_steel_ingot", "technic:lv_compressor", "technic:stainless_steel_ingot"}
+    }
+})
 
 --machine parts
 core.register_craft({
@@ -449,11 +459,24 @@ if core.get_modpath("underch") then
     table.insert(recipes, {
     30, "underch:malachite", "technic_many_machines:crushed_malachite 3"
     })
+    
+    core.register_craft({
+        type = "cooking",
+        output = "technic_many_machines:copper_piece 3",
+        recipe = "technic_many_machines:crushed_malachite",
+        cooktime = 6.0,
+    })
 end
 
 if core.get_modpath("too_many_stones") then
     table.insert(recipes, {
     30, "too_many_stones:galena", "technic_many_machines:crushed_galena 2"
+    })
+    core.register_craft({
+        type = "cooking",
+        output = "technic_many_machines:lead_piece 3",
+        recipe = "technic_many_machines:crushed_galena",
+        cooktime = 6.0,
     })
 end
 

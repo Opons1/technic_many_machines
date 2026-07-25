@@ -249,7 +249,7 @@ technic.register_compressor_recipe({
 --alloy furnace recipes
 recipes = {
     {"default:steel_ingot 5", "dye:red", "technic_many_machines:blocker", 8},
-    {"default:glass 8", "technic:uranium0_dust", "technic_many_machines:uranium_glass"}
+    {"default:glass 8", "technic:uranium0_dust", "technic_many_machines:uranium_glass 8"}
 }
 for _, recipe in pairs(recipes) do
 	technic.register_alloy_recipe({

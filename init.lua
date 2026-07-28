@@ -59,7 +59,7 @@ local guides = {
 	{
 		id = "drop_extractors",
 		title = "Drop Extractors",
-		image = "technic_many_machines_lv_side.png^tms_gear.png",
+		image = "technic_many_machines_lv_side.png^technic_many_machines_base_metal_gear.png",
 		desc = "Simulates the breaking of a block to obtain chance drops. Gravel turns into flint and leaves into saplings. Can only handle up to 4 possible outputs."
 	},
     {

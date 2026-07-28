@@ -19,7 +19,7 @@ local base_dust = "technic_silver_dust.png"
 local base_plate = "technic_many_machines_base_plate.png"
 local base_metal_block = "technic_many_machines_base_metal_block.png"
 local base_metal_piece = "technic_many_machines_base_metal_piece.png"
-
+local base_metal_gear = "technic_many_machines_base_metal_gear.png"
 
 local enable_test_items = core.settings:get_bool("technic_many_machines_enable_test_items", false)
 if enable_test_items then
@@ -107,7 +107,34 @@ local function register_metal_piece(name, data)
     return "technic_many_machines:" .. name .. "_metal_piece"
 end
 
+local function register_metal_gear(name, data)
+    local item = data.item or nil
+    local piece = data.item_piece or nil
+    local color = data.color or "#ffffff"
+    local intensity = data.intensity or 150
+    local light_source = data.light_source or 0
+    local title = data.title or name
+    local mpgroups = table.copy(data.groups) or {}
+    mpgroups["gear"] = 1
+    core.register_craftitem("technic_many_machines:gear_" .. name, {
+        inventory_image = base_metal_gear .. "^[colorize:" .. color .. ":" .. intensity,
+        light_source = light_source,
+        groups = mpgroups,
+        description = S(title .. " Gear")
+    })
+    if item and piece then
+        core.register_craft({
+            output = "technic_many_machines:gear_" .. name,
+            recipe = {
+                {"", item, ""},
+                {item, piece, item},
+                {"", item, ""}
+            }
+        })
+    end
 
+    return "technic_many_machines:gear_" .. name
+end
 --helper to make registering metals easier
 local function register_metal(name, data)
     local color = data.color or "#ffffff"
@@ -161,6 +188,8 @@ local function register_metal(name, data)
         })
     end
     local metalpiece = register_metal_piece(name, data)
+    data.piece = metalpiece
+    local gear = register_metal_gear(name, data)
     local fullname = "technic_many_machines:" .. name
     core.register_craft({
         type = "shapeless",

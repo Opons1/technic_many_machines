@@ -95,7 +95,7 @@ core.override_item("technic_many_machines:lv_drop_extractor_active", {
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^tms_gear.png"
+        "technic_many_machines_lv_side.png^technic_many_machines_base_metal_gear.png"
     }
 })
 core.override_item("technic_many_machines:lv_drop_extractor", {
@@ -106,7 +106,7 @@ core.override_item("technic_many_machines:lv_drop_extractor", {
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_lv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_lv_side.png^tms_gear.png"
+        "technic_many_machines_lv_side.png^technic_many_machines_base_metal_gear.png"
     }
 })
 core.override_item("technic_many_machines:mv_drop_extractor_active", {
@@ -116,7 +116,7 @@ core.override_item("technic_many_machines:mv_drop_extractor_active", {
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_mv_side.png^tms_gear.png"
+        "technic_many_machines_mv_side.png^technic_many_machines_base_metal_gear.png"
     }
 })
 core.override_item("technic_many_machines:mv_drop_extractor", {
@@ -127,7 +127,7 @@ core.override_item("technic_many_machines:mv_drop_extractor", {
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_mv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_mv_side.png^tms_gear.png"
+        "technic_many_machines_mv_side.png^technic_many_machines_base_metal_gear.png"
     }
 })
 core.override_item("technic_many_machines:hv_drop_extractor_active", {
@@ -137,7 +137,7 @@ core.override_item("technic_many_machines:hv_drop_extractor_active", {
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_hv_side.png^tms_gear.png"
+        "technic_many_machines_hv_side.png^technic_many_machines_base_metal_gear.png"
     }
 })
 core.override_item("technic_many_machines:hv_drop_extractor", {
@@ -148,11 +148,44 @@ core.override_item("technic_many_machines:hv_drop_extractor", {
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
         "technic_many_machines_hv_side.png^pipeworks_tube_connection_metallic.png",
-        "technic_many_machines_hv_side.png^tms_gear.png"
+        "technic_many_machines_hv_side.png^technic_many_machines_base_metal_gear.png"
+    }
+})
+
+--mk2
+technic.register_base_machine("technic_many_machines:hv_drop_extractor_mk2", {
+    description = S("HV Drop Extractor MK2"),
+    typename = "technic_many_machines:drop_extracting",
+    tier = "HV",
+    demand = {15000, 12000, 9000},
+    speed = 20,
+    upgrade = 1,
+    tube = 1
+})
+
+core.override_item("technic_many_machines:hv_drop_extractor_mk2_active", {
+    tiles = {
+        "technic_many_machines_hv_side_mk2.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^technic_many_machines_base_metal_gear.png"
+    }
+})
+core.override_item("technic_many_machines:hv_drop_extractor_mk2", {
+    short_description = S("HV Drop Extractor"),
+    tiles = {
+        "technic_many_machines_hv_side_mk2.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^pipeworks_tube_connection_metallic.png",
+        "technic_many_machines_hv_side_mk2.png^technic_many_machines_base_metal_gear.png"
     }
 })
 if core.get_modpath("techage") then
-    techage.register_node({"technic_many_machines:hv_drop_extractor", "technic_many_machines:hv_drop_extractor_active", "technic_many_machines:mv_drop_extractor", "technic_many_machines:mv_drop_extractor_active"}, {
+    techage.register_node({"technic_many_machines:hv_drop_extractor_mk2", "technic_many_machines:hv_drop_extractor_mk2_active", "technic_many_machines:hv_drop_extractor", "technic_many_machines:hv_drop_extractor_active", "technic_many_machines:mv_drop_extractor", "technic_many_machines:mv_drop_extractor_active"}, {
         on_push_item = function(pos, in_dir, stack)
             local meta = core.get_meta(pos)
             local inv = meta:get_inventory()

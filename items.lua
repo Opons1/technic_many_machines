@@ -104,7 +104,7 @@ local function register_metal_piece(name, data)
         time = 4
     })
     end
-    return "technic_many_machines:" .. name .. "_metal_piece"
+    return "technic_many_machines:" .. name .. "_piece"
 end
 
 local function register_metal_gear(name, data)
@@ -187,10 +187,11 @@ local function register_metal(name, data)
             time = presstime,
         })
     end
+    local fullname = "technic_many_machines:" .. name .. "_ingot"
+    data.item = fullname
     local metalpiece = register_metal_piece(name, data)
-    data.piece = metalpiece
+    data.item_piece = metalpiece
     local gear = register_metal_gear(name, data)
-    local fullname = "technic_many_machines:" .. name
     core.register_craft({
         type = "shapeless",
         output = fullname .. "_ingot 9",

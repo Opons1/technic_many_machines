@@ -187,8 +187,8 @@ local function register_metal(name, data)
             time = presstime,
         })
     end
-    local fullname = "technic_many_machines:" .. name .. "_ingot"
-    data.item = fullname
+    local fullname = "technic_many_machines:" .. name
+    data.item = fullname .. "_ingot"
     local metalpiece = register_metal_piece(name, data)
     data.item_piece = metalpiece
     local gear = register_metal_gear(name, data)

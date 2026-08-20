@@ -381,31 +381,31 @@ if core.get_modpath("3d_armor") then
     {4, "3d_armor:chestplate_bronze", getpn("bronze", 48)},
     {4, "3d_armor:helmet_bronze", getpn("bronze", 30)},
     {4, "3d_armor:leggings_bronze", getpn("bronze", 42)},
-    {4, "3d_armor:shield_bronze", getpn("bronze", 48)},
+    {4, "shields:shield_bronze", getpn("bronze", 48)},
     --diamond
     {4, "3d_armor:boots_diamond", "default:diamond 3"},
     {4, "3d_armor:chestplate_diamond", "default:diamond 6"},
     {4, "3d_armor:helmet_diamond", "default:diamond 4"},
     {4, "3d_armor:leggings_diamond", "default:diamond 6"},
-    {4, "3d_armor:shield_diamond", "default:diamond 6"},
+    {4, "shields:shield_diamond", "default:diamond 6"},
     --gold
     {4, "3d_armor:boots_gold", getpn("gold", 24)},
     {4, "3d_armor:chestplate_gold", getpn("gold", 48)},
     {4, "3d_armor:helmet_gold", getpn("gold", 30)},
     {4, "3d_armor:leggings_gold", getpn("gold", 42)},
-    {4, "3d_armor:shield_gold", getpn("gold", 48)},
+    {4, "shields:shield_gold", getpn("gold", 48)},
     --mithril
     {4, "3d_armor:boots_mithril", getpn("mithril", 24)},
     {4, "3d_armor:chestplate_mithril", getpn("mithril", 48)},
     {4, "3d_armor:helmet_mithril", getpn("mithril", 30)},
     {4, "3d_armor:leggings_mithril", getpn("mithril", 42)},
-    {4, "3d_armor:shield_mithril", getpn("mithril", 48)},
+    {4, "shields:shield_mithril", getpn("mithril", 48)},
     --steel
     {4, "3d_armor:boots_steel", getpn("steel", 24)},
     {4, "3d_armor:chestplate_steel", getpn("steel", 48)},
     {4, "3d_armor:helmet_steel", getpn("steel", 30)},
     {4, "3d_armor:leggings_steel", getpn("steel", 42)},
-    {4, "3d_armor:shield_steel", getpn("steel", 48)},
+    {4, "shields:shield_steel", getpn("steel", 48)},
 }
 table.insert_all(recipes, armor)
 end

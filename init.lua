@@ -8,9 +8,14 @@ technic.register_cable("technic_many_machines:ev_cable", {
     tiles = {"technic_many_machines_hv_bottom.png"}
 })
 ]]
+
+local mp = core.get_modpath(core.get_current_modname())
 --i need help, the code in the cryptominer is garbage but idk how to make better
 local enable_cryptominer = core.settings:get_bool("technic_many_machines_enable_cryptominer") or false
 technic_many_machines.cryptominer_output = core.settings:get("technic_many_machines_cryptominer_output") or ""
+--common functions go here
+dofile(mp .. "/helpers.lua")
+
 --crusher cuz yes
 dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
 --items
@@ -18,7 +23,7 @@ dofile(core.get_modpath("technic_many_machines").."/items.lua")
 --decorative
 dofile(core.get_modpath("technic_many_machines") .. "/decorative.lua")
 --tools
---dofile(core.get_modpath("technic_many_machines").."/tools.lua")
+dofile(core.get_modpath("technic_many_machines").."/tools.lua")
 
 dofile(core.get_modpath("technic_many_machines").."/machines/mass_compressor.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/advanced_alloy_furnace.lua")
@@ -37,7 +42,7 @@ dofile(core.get_modpath("technic_many_machines").."/machines/forge.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/hydro.lua")
 dofile(core.get_modpath("technic_many_machines").."/machines/grinder.lua")
 
---dofile(core.get_modpath("technic_many_machines").."/machines/areaminer.lua")
+dofile(core.get_modpath("technic_many_machines").."/machines/areaminer.lua")
 
 
 dofile(core.get_modpath("technic_many_machines").."/recipes.lua")
@@ -159,6 +164,7 @@ core.register_chatcommand("etmguide", {
     func = function(name, param)
         core.show_formspec(name, "technic_many_machines:tutorial", get_main_formspec())
         return true
+        
     end,
 })
 

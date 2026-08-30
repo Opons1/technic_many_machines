@@ -48,7 +48,6 @@ end
 --toggles machine on and off
 local function toggle_machine(meta)
     local state = meta:get_int("toggle")
-    core.chat_send_all(state)
     if state == 0 then
         meta:set_int("toggle", 1)
         meta:set_string("formspec", get_formspec(true))
@@ -256,10 +255,8 @@ core.register_node("technic_many_machines:hv_areaminer", {
                 --only change if the number changed
                 if coord ~= existing_coord then
                     meta:set_int(field, coord)
-                    core.chat_send_all(coord)
                     coords[field] = coord
                     coords_updated = true
-                    core.chat_send_all(field .. " has been updated to " .. coord)
                 end
             end
         end
@@ -281,7 +278,6 @@ core.register_node("technic_many_machines:hv_areaminer", {
             local pos2int = postoint(pos2)
             meta:set_int("pos1", pos1int)
             meta:set_int("pos2", pos2int)
-            core.chat_send_all(pos1int .. " and " .. pos2int)
         end
     end,
 
@@ -306,7 +302,6 @@ core.register_node("technic_many_machines:hv_areaminer", {
         if placer:is_player() and type(placer) == "userdata" then
             local meta = core.get_meta(pos)
             meta:set_string("owner", placer:get_player_name())
-            core.chat_send_all(placer:get_player_name())
         end
     end,
 

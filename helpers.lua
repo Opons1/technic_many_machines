@@ -89,41 +89,6 @@ end
 
 fakeplayer.is_fake_player = true
 
-function core.check_player_privs(name, ...)
-	if core.is_player(name) then
-		name = name:get_player_name()
-	elseif type(name) ~= "string" then
-		error("core.check_player_privs expects a player or playername as " ..
-			"argument, not " .. type(name), 2)
-	end
-
-	local requested_privs = {...}
-	local player_privs = core.get_player_privs(name)
-	local missing_privileges = {}
-
-	if type(requested_privs[1]) == "table" then
-		-- We were provided with a table like { privA = true, privB = true }.
-		for priv, value in pairs(requested_privs[1]) do
-			if value and not player_privs[priv] then
-				missing_privileges[#missing_privileges + 1] = priv
-			end
-		end
-	else
-		-- Only a list, we can process it directly.
-		for key, priv in pairs(requested_privs) do
-			if not player_privs[priv] then
-				missing_privileges[#missing_privileges + 1] = priv
-			end
-		end
-	end
-
-	if #missing_privileges > 0 then
-		return false, missing_privileges
-	end
-
-	return true, ""
-end
-
 function tmm.dig_node(meta, pos, data)
     local node = core.get_node(pos) or data.node
     local nodeinfo = core.registered_nodes[node.name]

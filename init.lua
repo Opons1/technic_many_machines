@@ -21,7 +21,7 @@ dofile(core.get_modpath("technic_many_machines").."/machines/crusher.lua")
 --items
 dofile(core.get_modpath("technic_many_machines").."/items.lua")
 --decorative
-dofile(core.get_modpath("technic_many_machines") .. "/decorative.lua")
+dofile(core.get_modpath("technic_many_machines") .. "/decor/decorative.lua")
 --tools
 dofile(core.get_modpath("technic_many_machines").."/tools.lua")
 

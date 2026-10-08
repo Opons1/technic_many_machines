@@ -1,3 +1,9 @@
+local function df(file) 
+    dofile(core.get_modpath(core.get_current_modname()) .. "/decor/" .. file)
+end
+
+df("plantlife.lua")
+
 local bricks = {
     "basic_materials:brass_block",
     "default:bronzeblock",

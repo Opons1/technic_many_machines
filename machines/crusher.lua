@@ -1,7 +1,7 @@
 local S = core.get_translator("technic_many_machines")
 technic.register_recipe_type("crushing", {
     description = S("Crushing"),
-    inventory_image = "technic_many_machines_mv_crusher_front.png",
+    icon = "technic_many_machines_mv_crusher_front.png",
     input_size = 1,
     output_size = 4,
 })

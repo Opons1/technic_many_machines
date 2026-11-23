@@ -101,20 +101,20 @@ local function get_target_pos(meta)
 end
 
 --does the digging part
-local function do_dig(pos, meta, node, owner)
+local function do_dig(pos, meta, node, owner, userpos)
     local filtertype = meta:get_string("filtertype")
     if filtertype == "whitelist" then
         local nodename = node.name
         if meta:get_int(nodename) == 1 then
-            return tmm.dig_node(meta, pos, {name = owner, node = node})
+            return tmm.dig_node(meta, pos, {name = owner, node = node}, userpos)
         end
     elseif filtertype == "blacklist" then
         local nodename = node.name
         if meta:get_int(nodename) ~= 1 then
-            return tmm.dig_node(meta, pos, {name = owner, node = node})
+            return tmm.dig_node(meta, pos, {name = owner, node = node}, userpos)
         end
     else
-        return tmm.dig_node(meta, pos, {name = owner, node = node})
+        return tmm.dig_node(meta, pos, {name = owner, node = node}, userpos)
     end
 end
 
